@@ -30,13 +30,13 @@ app.post('/', (req, res) => {
 //-----------------------------------------
 app.use(cors());
 
-
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); 
 
-app.post("/create-meeting", (req, res) => {
+app.post("/createMeeting", (req, res) => {
   const playload = req.body;
   const config ={
-    token:"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6InJHanJoUXRqVGxXZG9NMWVJYWhNa3ciLCJleHAiOjE2NDA1OTUwMDQsImlhdCI6MTY0MDU4OTYwNX0.l5SWpt9FJFWFHgQ_nUrpiJiwql71miVvGvw9MmS25yY",
+    token:"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6InJHanJoUXRqVGxXZG9NMWVJYWhNa3ciLCJleHAiOjE3MzYwNTg2MDAsImlhdCI6MTY0MTM5MjE2Nn0.tS3gXPOMcHZX7zVvl_SLCg_bzTIjmqYJJ-kDhqehQ_c",
     email:"paramben10@gmail.com",
   }
   try {
@@ -56,9 +56,16 @@ app.post("/create-meeting", (req, res) => {
     };
     request(options, (error, response, body) => {
       console.log(response.statusCode);
+      
       if (!error && response.statusCode === 201) {
-        res.send({ message: "meeting has been successfully created " });
-      } else {
+        res.send({ 
+          message: "meeting has been successfully created ",
+          link: response.body.join_url
+        });
+        console.log(response.body.join_url);
+      } 
+      else 
+      {
         console.log(body);
         res.send({ message: body.message });
       }
@@ -67,7 +74,6 @@ app.post("/create-meeting", (req, res) => {
   catch (e) {
     res.status(500).send(e.toString());
   }
-  res.send('Hello World!')
 });
 
 app.listen(port, () =>
