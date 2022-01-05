@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-meeting',
@@ -13,11 +14,14 @@ import { DOCUMENT } from '@angular/common';
 export class CreateMeetingComponent implements OnInit {
 
   createMeetingForm: FormGroup;
+  
+  link:string;
 
   constructor(
     private _fb: FormBuilder,
     private _httpClient: HttpClient,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +52,7 @@ export class CreateMeetingComponent implements OnInit {
 
     this._httpClient.post(`${environment.API_URL}/createmeeting`, payloads).subscribe((res: any) => {
       this.displayMessage(res.message);
+      this.link= res.link;
     }, (error: any) => {
       this.displayMessage(error.message);
     })
@@ -69,4 +74,9 @@ export class CreateMeetingComponent implements OnInit {
       duration_minutes: ['', [Validators.required]],
     })
   }
+  
+  join_created_meeting(){
+    window.location.href = this.link;
+  }
+
 }
