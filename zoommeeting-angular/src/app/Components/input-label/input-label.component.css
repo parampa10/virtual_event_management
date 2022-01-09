@@ -1,0 +1,39 @@
+.form-label-input {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.label-text span {
+    margin-left: 4px;
+    color: rgb(255, 0, 0);
+    vertical-align: super;
+}
+
+.form-label-input label {
+    font-size: 14px;
+    font-weight: 100;
+    padding-left: 6px;
+    color: rgba(68, 68, 68, 0.664);
+}
+
+.form-label-input input {
+    width: 400px;
+    height: 40px;
+    margin-top: 10px;
+    padding: 3px 7px;
+    font-size: 17px;
+    border: 1px solid rgb(87, 63, 63);
+    border-radius: 6px;
+}
+
+.form-label-input input:focus {
+    border: none;
+    background-color: #87cbf3af;
+}
+
+.non-error-text {
+  display: none;
+}

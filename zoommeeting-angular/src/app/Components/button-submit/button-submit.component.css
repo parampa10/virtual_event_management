@@ -1,0 +1,15 @@
+.btn-submit {
+    display: flex;
+}
+
+.btn-submit button {
+    width: 200px;
+    height: 40px;
+    background-color: rgb(34, 105, 238);
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+}

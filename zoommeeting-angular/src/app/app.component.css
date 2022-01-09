@@ -20,3 +20,42 @@ button {
 button:hover {
   background-color: #2681F2;
 }
+
+/* @font-face {
+  font-family: "Cooper Black";
+  src: url("/fonts/cooper-black.otf");
+} */
+
+.p {
+  /* font-family: "", serif; */
+  font-size: 3.6em;
+ color: black;
+ margin-top: 10px;
+ margin-left: 0px;
+
+
+}
+
+.q{
+cursor: pointer;
+}
+
+.font_white{
+color:white;
+
+}
+
+.now{
+background-color: darkblue;
+}
+
+.nowdish{
+background-color:rgb(14, 255, 14);
+}
+
+.my{
+color:white !important;
+background-color: blue;
+}
+
+

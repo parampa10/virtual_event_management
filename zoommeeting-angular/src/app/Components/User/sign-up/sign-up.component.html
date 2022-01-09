@@ -1,0 +1,173 @@
+<div #error_display>
+  <app-error-display errorText="{{ errorText }}" [isInvalid]="isInvalid"></app-error-display>
+</div>
+
+<div class="register-container">
+    <div class="details">
+        <p>Personal Details</p>
+        <hr>
+        <app-input-label
+          type="text"
+          name="first_name"
+          text="First Name"
+          [isRequired]="true"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+        <app-input-label
+          type="text"
+          name="last_name"
+          text="Last Name"
+          [isRequired]="true"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+        <app-input-label
+          type="date"
+          name="dob"
+          text="Date of Birth"
+          [isRequired]="true"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+        <app-input-label
+          type="text"
+          name="address_line1"
+          text="Address Line 1"
+          [isRequired]="true"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+        <app-input-label
+          type="text"
+          name="address_line2"
+          text="Address Line 2"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+        <app-input-label
+          type="text"
+          name="city"
+          text="City"
+          [isRequired]="true"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+        <app-input-label
+          type="text"
+          name="state"
+          text="State"
+          [isRequired]="true"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+        <app-input-label
+          type="text"
+          name="country"
+          text="Country"
+          [isRequired]="true"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+    </div>
+    <div class="details">
+        <p>Contact Details</p>
+        <hr>
+        <app-input-label
+          type="tel"
+          name="primary_phone_number"
+          text="Phone Number"
+          [isRequired]="true"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+        <app-input-label
+          type="tel"
+          name="alternate_phone_number"
+          text="Alternate Phone Number"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+        <app-input-label
+          type="email"
+          name="primary_email_address"
+          text="Email Address"
+          [isRequired]="true"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+        <app-input-label
+          type="email"
+          name="alternate_email_address"
+          text="Alternate Email Address"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+    </div>
+    <div class="details">
+        <p>Affiliation Details</p>
+        <hr>
+        <app-input-label
+          type="text"
+          name="affiliation_name"
+          text="Affiliation Name"
+          [isRequired]="true"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+        <app-input-label
+          type="email"
+          name="affiliation_email_address"
+          text="Affiliation Email"
+          [isRequired]="true"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+    </div>
+    <div class="details">
+        <p>Credential Details</p>
+        <hr>
+        <app-input-label
+          type="text"
+          name="username"
+          text="Username"
+          [isRequired]="true"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+        <app-input-label
+          type="password"
+          name="password"
+          text="Password"
+          [isRequired]="true"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+        <div id="password_mismatch">
+          <app-input-label
+          type="password"
+          name="confirm_password"
+          text="Confirm Password"
+          [isRequired]="true"
+          [btnClicked]="btnClicked"
+          (fetchData)="inputData($event)"></app-input-label>
+          <div
+            [ngStyle]="{ 'display': !password_mismatch ? 'none' : null }">
+            Please check your entered password. <br>
+            Password mismatched.
+          </div>
+        </div>
+    </div>
+    <div class="checkbox-container">
+        <div>
+          <div>I agree all the terms and conditions of IPR</div>
+          <div>*</div>
+        </div>
+        <div>
+          <input
+          type="checkbox"
+          name="checkbox"
+          class="checkbox"
+          (change)="onChange()" />
+        </div>
+    </div>
+    <div
+      class="error-text error-margin"
+      [ngStyle]="{ 'visibility': !isCheckboxValid ? 'visible' : 'hidden' }">
+      Agree terms and conditions.
+    </div><div class="error-margin">
+      <re-captcha
+      (resolved)="resolved($event)"
+      siteKey="6Lev9OQcAAAAALGHbuLrDIf3QVn8Y5ZgRLlHEpri"></re-captcha>
+    </div>
+    <div
+      class="error-text error-margin"
+      [ngStyle]="{ 'visibility': !isRecaptchaValid ? 'visible' : 'hidden' }">
+      Captcha is required.
+    </div>
+    <app-button-submit text="Register" alignment="end" (btnClick)="buttonClicked()" (click)="registerUser()"></app-button-submit>
+</div>

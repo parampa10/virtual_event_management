@@ -1,0 +1,71 @@
+.register-container {
+    margin-top: 7%;
+    width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+.details {
+    margin-top: 20px;
+}
+
+.register-container p {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding-left: 10px;
+    padding-top: 20px;
+    padding-bottom: 7px;
+}
+
+.register-container hr {
+    height: 1px;
+    background-color: rgba(211, 211, 212, 0.521);
+    border: none;
+    margin-bottom: 10px;
+}
+
+#password_mismatch {
+  display: flex;
+  flex-direction: column;
+  color: red;
+}
+
+#password_mismatch div {
+  margin-left: 80px;
+  margin-top: 20px;
+}
+
+.checkbox-container {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+
+.checkbox-container div {
+  display: flex;
+  flex-direction: row;
+}
+
+.checkbox-container div div:nth-child(1) {
+    flex: 6;
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 1px;
+    margin-top:7px;
+}
+
+.checkbox-container div div:nth-child(2) {
+  color: rgb(255, 0, 0);
+  margin-left: 4px;
+}
+
+.checkbox-container input {
+    flex: 1;
+    margin-top:7px;
+}
+
+.error-margin {
+  margin: 10px 0px;
+}

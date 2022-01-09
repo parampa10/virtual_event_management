@@ -1,0 +1,22 @@
+.error-text-container {
+  display: flex;
+  width: 500px;
+  height: 100px;
+  border: 3px solid #ff0000;
+  margin: 50px auto 0 auto;
+  background-color: #ff000010;
+  align-items: center;
+}
+
+.error-text-container i {
+  font-size: 30px;
+  color: #ff0000;
+  padding: 30px;
+}
+
+.error-text-container div {
+  font-size: 20px;
+  font-weight: 100;
+  color: #ff0000;
+  margin: 0 30px;
+}

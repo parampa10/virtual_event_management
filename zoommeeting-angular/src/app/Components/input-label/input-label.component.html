@@ -1,0 +1,22 @@
+<div class="form-label-input">
+  <div class="label-text">
+    <label for="{{ name }}">{{ text }}</label>
+    <span
+      [ngStyle]="{ 'visibility': isRequired ? 'visible' : 'hidden' }">
+      *
+    </span>
+  </div>
+  <input
+    type="{{ type }}"
+    id="{{ name }}"
+    name="{{ name }}"
+    placeholder="{{ text }}"
+    value="{{ value }}"
+    [(ngModel)]="data"
+    (change)="addInputData(data)"/>
+    {{ btnClicked ? checkValidation() : null }}
+    <div
+      [ngClass]="(isRequired && isEmpty) ? 'error-text' : (!isValid ? 'error-text' : 'non-error-text')">
+      {{ isRequired ? (isEmpty || !isValid ? errorText : null) : (!isValid ? errorText : null)}}
+    </div>
+</div>

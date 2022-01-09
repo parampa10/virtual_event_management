@@ -1,0 +1,8 @@
+<div
+  class="error-text-container"
+  [ngStyle]="{ 'display': !isInvalid ? 'none' : null }">
+  <i class="fa fa-exclamation-triangle"></i>
+  <div>
+    {{ errorText }}
+  </div>
+</div>
