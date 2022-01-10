@@ -9,11 +9,11 @@ export class AuthenticationService {
   constructor(private webReqService: WebRequestService) { }
 
   loginUser(credentials: Object) {
-    return this.webReqService.post('login', credentials)
+    return this.webReqService.post('user/login', credentials)
   }
 
   createUser(userInfo: Object) {
-    return this.webReqService.post('signup', userInfo)
+    return this.webReqService.post('user/signup', userInfo)
   }
   
 }

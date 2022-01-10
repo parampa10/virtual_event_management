@@ -18,7 +18,7 @@ ZoomMtg.i18n.reload('en-US');
 export class JoinMeetingComponent implements OnInit {
 
   // setup your signature endpoint here: https://github.com/zoom/meetingsdk-sample-signature-node.js
-  signatureEndpoint = 'http://localhost:4000/'
+  signatureEndpoint = 'http://localhost:5000/'
   apiKey = 'rGjrhQtjTlWdoM1eIahMkw'
   apisecret = 'Nono21J2UwNRlTKir1pQwB3BlhcOnMZ2cuMU'
   meetingNumber = '9031302383'

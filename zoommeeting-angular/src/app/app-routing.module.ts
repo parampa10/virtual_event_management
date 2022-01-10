@@ -7,13 +7,14 @@ import { SignupComponent } from './Components/User/sign-up/sign-up.component';
 import { InputLabelComponent } from './Components/input-label/input-label.component';
 import { ErrorDisplayComponent } from './Components/error-display/error-display.component';
 import { ButtonSubmitComponent } from './Components/button-submit/button-submit.component';
-
+// import { LoginComponent } from './Components/User/login/login.component';
 
 const routes: Routes =[
 
   {path: 'createMeeting', component: CreateMeetingComponent } ,
   {path: 'joinMeeting', component:JoinMeetingComponent },
-  {path: 'signUp', component:SignupComponent}
+  {path: 'signUp', component:SignupComponent},
+  // {path: 'LogIn', component:LoginComponent},
   
 ]
 

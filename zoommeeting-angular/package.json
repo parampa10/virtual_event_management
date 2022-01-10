@@ -28,6 +28,8 @@
     "crypto-js": "^4.1.1",
     "jquery": "^3.6.0",
     "js-base64": "^3.7.2",
+    "ng-recaptcha": "^9.0.0",
+    "ngx-cookie-service": "^13.1.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.3",
     "zone.js": "~0.11.4"
