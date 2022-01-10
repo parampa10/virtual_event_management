@@ -6,20 +6,20 @@ const jwt=require("jsonwebtoken")
 
 
 exports.user_signup =async  (req, res) => {
-            let {fname,lname,email,password}=req.body;
-            if (!fname) {
+            let {first_name,last_name,primary_email_address,password}=req.body;
+            if (!first_name) {
               res.status(400).send({
                 message: "First name can not be empty!"
               });
               return;
             }
-            if (!lname) {
+            if (!last_name) {
               res.status(400).send({
                 message: "Last name can not be empty!"
               });
               return;
             }
-            if (!email) {
+            if (!primary_email_address) {
               res.status(400).send({
                 message: "Email can not be empty!"
               });
@@ -33,9 +33,9 @@ exports.user_signup =async  (req, res) => {
             }
             let hash= await bcrypt.hash(password,10);
             user.create({
-                fname:fname,
-                lname:lname,
-                email:email,
+                fname:first_name,
+                lname:last_name,
+                email:primary_email_address,
                 password:hash
               })
               .then(result => {
@@ -53,13 +53,13 @@ exports.user_signup =async  (req, res) => {
             }
 
 exports.user_login = (req, res, next) => {
-  if (!req.body.email) {
+  if (!req.body.primary_email_address) {
     res.status(400).send({
       message: "Please enter the email!"
     });
     return;
   }
-  user.findOne({ where: {email: req.body.email} })
+  user.findOne({ where: {email: req.body.primary_email_address} })
     .then(user => {
       if (user.length < 1) {
         return res.status(401).json({
