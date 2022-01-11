@@ -16,7 +16,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
@@ -29,6 +28,7 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
   imports: [
     BrowserModule,
     HttpClientModule,
+    
     MatButtonModule, 
     MatSnackBarModule, 
     BrowserAnimationsModule,

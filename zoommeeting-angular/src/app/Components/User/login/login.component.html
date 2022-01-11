@@ -1,0 +1,40 @@
+<div #error_display>
+  <app-error-display errorText="{{ errorText }}" [isInvalid]="isInvalid"></app-error-display>
+</div>
+
+<div class="login-container">
+  <div class="login-statement">
+      Log in with your IPR account
+  </div>
+  <div class="form-control">
+    <app-input-label
+      type="text"
+      name="username"
+      text="Username"
+      [btnClicked]="btnClicked"
+      [isRequired]=true
+      (fetchData)="inputData($event)"></app-input-label>
+    <app-input-label
+      [type]="visible ? 'text' : 'password'"
+      name="password"
+      text="Password"
+      [btnClicked]="btnClicked"
+      [isRequired]=true
+      (fetchData)="inputData($event)"></app-input-label>
+    
+    <div class="show-password-container">
+        <input type="checkbox" (click)="onTogglePassword()" />
+        Show Password
+    </div>
+
+    <div class="forgot-password-text">
+        <a [routerLink]="'/forgot-password'">Forgot Password?</a>
+    </div>
+
+    <app-button-submit text="Log In" alignment="center" (btnClick)="buttonClicked()" (click)="loginUser()"></app-button-submit>
+    <div class="new-account-text">
+        Don't have an accounnt?
+        <a [routerLink]="'/signup'">Register</a>
+    </div>
+  </div>
+</div>

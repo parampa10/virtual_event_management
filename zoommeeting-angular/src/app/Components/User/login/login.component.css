@@ -1,0 +1,71 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 600px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.151), -2px 1px 1px 1px rgba(0, 0, 0, 0.116);
+    border-radius: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    margin-top: 100px;
+    margin-bottom: 8%;
+}
+
+.login-statement {
+    width: 200px;
+    text-align: center;
+    align-self: center;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 35px;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    height: 400px;
+}
+
+.show-password-container {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.forgot-password-text a {
+    text-decoration: none;
+    color: #209de6d0;
+    font-size: 13px;
+    font-weight: 100;
+    margin-left: 70%;
+}
+
+.btn-login {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-login button {
+    width: 200px;
+    height: 40px;
+    background-color: rgb(34, 105, 238);
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.new-account-text {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.new-account-text a {
+    text-decoration: none;
+    color: #209de6d0;
+    font-weight: 300;
+}
