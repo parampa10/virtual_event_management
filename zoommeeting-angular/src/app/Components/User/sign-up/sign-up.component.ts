@@ -10,7 +10,7 @@ import { AuthenticationService } from 'src/app/services/authentication/authentic
 })
 export class SignupComponent implements OnInit {
 
-  
+  radiobutton=""
   checkbox = 0
   errorText = ""
   recaptcha_response = ''
@@ -42,6 +42,9 @@ export class SignupComponent implements OnInit {
   username = {text: "", isNotEmpty: false}
   password = {text: "", isNotEmpty: false}
   confirm_password = {text: "", isNotEmpty: false}
+  is_attendee = false
+  is_admin = false
+  is_presenter = false
 
   userInfo: RegisterUser = {
     first_name: "",
@@ -60,6 +63,9 @@ export class SignupComponent implements OnInit {
     affiliation_email_address: "",
     username: "",
     password: "",
+    is_admin:false,
+    is_attendee:false,
+    is_presenter:false
   }
 
   buttonClicked() {
@@ -75,6 +81,18 @@ export class SignupComponent implements OnInit {
 
   onChange() {
     this.checkbox++
+  }
+
+  onradioChange(evt) {
+    if(evt.target.value == 'attendee'){
+      this.is_attendee=true
+    }
+    if(evt.target.value == 'presenter'){
+      this.is_presenter=true
+    }
+    if(evt.target.value == 'ipr-admin'){
+      this.is_admin=true
+    }
   }
 
   resolved(captchaResponse: string) {
@@ -251,6 +269,10 @@ export class SignupComponent implements OnInit {
           this.userInfo.affiliation_email_address = this.affiliation_email_address.text
           this.userInfo.username = this.username.text
           this.userInfo.password = this.password.text
+          this.userInfo.is_admin = this.is_admin
+          this.userInfo.is_presenter=this.is_presenter
+          this.userInfo.is_attendee=this.is_attendee
+
           console.log(this.userInfo)
           this.authService.createUser(this.userInfo).subscribe(
             data => {

@@ -9,5 +9,10 @@ html, body {
   display: none;
 }
 
+.error-text {
+  font-size: 14px;
+  margin-bottom: 0;
+  color: red;
+}
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

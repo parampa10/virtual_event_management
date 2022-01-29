@@ -15,4 +15,8 @@ export interface RegisterUser {
   affiliation_email_address: string
   username: string
   password: string
+  is_admin: boolean
+  is_attendee: boolean
+  is_presenter: boolean
+  
 }

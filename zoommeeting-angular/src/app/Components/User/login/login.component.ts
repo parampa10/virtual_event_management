@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
             }
           } else if (res.hasOwnProperty('text')) {
             const data = this.getDataFromObj(res)
-            this.router.navigate(['/login/verification-required', { text: data }], { skipLocationChange: true })
+            this.router.navigate(['/user/login', { text: data }], { skipLocationChange: true })
           }
         },
         error => {

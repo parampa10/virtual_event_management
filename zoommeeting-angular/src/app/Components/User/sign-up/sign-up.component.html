@@ -155,6 +155,35 @@
           (change)="onChange()" />
         </div>
     </div>
+
+    <div class="radiobutton-container">
+        <div>
+          <input
+          type="radio"
+          name="role"
+          class="role"
+          value="attendee"
+          checked="checked"
+          (change)="onradioChange($event)" />
+        </div><label for="html">Attendee</label>
+        <div>
+          <input
+          type="radio"
+          name="role"
+          class="role"
+          value="presenter"
+          (change)="onradioChange($event)" />
+        </div><label for="html">Presenter</label>
+        <div>
+          <input
+          type="radio"
+          name="role"
+          class="role"
+          value="ipr-admin"
+          (change)="onradioChange($event)" />
+        </div><label for="html">Ipr-admin</label>
+    </div>
+
     <div
       class="error-text error-margin"
       [ngStyle]="{ 'visibility': !isCheckboxValid ? 'visible' : 'hidden' }">

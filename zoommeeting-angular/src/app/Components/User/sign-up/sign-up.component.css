@@ -43,6 +43,21 @@
     justify-content: space-between;
 }
 
+.radiobutton-container {
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-between;
+}
+
+.radiobutton-container input {
+  flex: 1;
+  margin-top:7px;
+}
+.radiobutton-container label {
+  flex: 1;
+  margin-left: 1px;
+}
+
 .checkbox-container div {
   display: flex;
   flex-direction: row;
