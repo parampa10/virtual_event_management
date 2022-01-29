@@ -33,6 +33,9 @@ const Event = db.define('event', {
   },
   veneue_id: {
     type: Sequelize.INTEGER
+  },
+  veneue_id_2: {
+    type: Sequelize.INTEGER
   }
 });
 

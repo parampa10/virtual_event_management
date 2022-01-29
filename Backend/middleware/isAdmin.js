@@ -1,5 +1,12 @@
 const User = require('../models/User');
 
+module.exports =async (req,res,next)=>{
+    if (!req.user.is_admin)
+        return res.status(401).send({ msg: "Not an admin, sorry" });
+    next();
+};
+
+
 // module.exports = async (req,res,next) =>{
 //         try {
 //             const { user_email } = req.user
@@ -10,9 +17,3 @@ const User = require('../models/User');
 //             res.status(400).send({ error: "Something went wrong. Please try again." })
 //         }
 // };
-
-module.exports =async (req,res,next)=>{
-    if (!req.user.is_admin)
-        return res.status(401).send({ msg: "Not an admin, sorry" });
-    next();
-};

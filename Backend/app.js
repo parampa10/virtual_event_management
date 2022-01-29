@@ -9,6 +9,10 @@ const cors=require('cors');
 const path = require('path');
 dotenv.config();
 
+const checkAuth = require('./middleware/verifytoken');
+const checkAdmin = require('./middleware/isAdmin');
+const checkAttendee = require('./middleware/isAttendee');
+const checkPresenter = require('./middleware/isPresenter');
 
 const crypto = require('crypto')
 const request = require("request");
@@ -55,7 +59,7 @@ app.post('/', (req, res) => {
   })
 })
 
-app.post("/createMeeting", (req, res) => {
+app.post("/createMeeting", checkAuth, checkAdmin, (req, res) => {
   const playload = req.body;
   const config ={
     token:"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6InJHanJoUXRqVGxXZG9NMWVJYWhNa3ciLCJleHAiOjE3MzYwNTg2MDAsImlhdCI6MTY0MTM5MjE2Nn0.tS3gXPOMcHZX7zVvl_SLCg_bzTIjmqYJJ-kDhqehQ_c",

@@ -77,7 +77,9 @@ exports.user_login = (req, res, next) => {
             {
               email: user.email,
               id:user.id,
-              is_admin:user.is_admin
+              is_admin:user.is_admin,
+              is_attendee:user.is_attendee,
+              is_presenter:user.is_presenter,
             },
             process.env.JWT_KEY,
             {

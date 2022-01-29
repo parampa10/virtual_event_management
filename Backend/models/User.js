@@ -26,6 +26,14 @@ const User = db.define('user', {
   is_admin:{
     type: Sequelize.BOOLEAN,
     defaultValue: false
+  },
+  is_attendee:{
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
+  is_presenter:{
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 });
 
