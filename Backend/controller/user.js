@@ -53,15 +53,15 @@ exports.user_signup =async  (req, res) => {
             }
 
 exports.user_login = (req, res, next) => {
-  if (!req.body.primary_email_address) {
+  if (!req.body.username) {
     res.status(400).send({
       message: "Please enter the email!"
     });
     return;
   }
-  user.findOne({ where: {email: req.body.primary_email_address} })
+  user.findOne({ where: {email: req.body.username} })
     .then(user => {
-      if (user.length < 1) {
+      if (!user) {
         return res.status(401).json({
           message: "Not found"
         });
