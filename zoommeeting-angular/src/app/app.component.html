@@ -1,10 +1,27 @@
 <body ng-app="myApp">
+  <mat-toolbar>
+    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <span>VEMS</span>
+    <!-- {is_authenticated} -->
+    <span class="example-spacer" style="flex: 1 1 auto;"></span>
+    <a mat-button routerLink="/logIn" routerLinkActive="active" *ngIf="!is_authenticated">
+      Login
+    </a>
+    <a mat-button routerLink="/signUp" routerLinkActive="active" *ngIf="!is_authenticated" >
+      Signup
+    </a>
+    <a mat-button routerLink="/createMeeting" routerLinkActive="active" *ngIf="is_authenticated">
+      Create Meeting
+    </a>
+    <a mat-button *ngIf="is_authenticated" (click)="logout()">
+      Logout
+    </a>
+  </mat-toolbar>  
     <div class="body-container">
       <router-outlet></router-outlet>
     </div>
 </body>
  
-
-  
-
 <!--<app-create-meeting></app-create-meeting>-->
