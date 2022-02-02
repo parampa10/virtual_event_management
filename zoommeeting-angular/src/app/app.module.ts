@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
@@ -19,6 +19,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+import { AuthInterceptorService } from './services/authentication/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -46,10 +47,13 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
     MatSlideToggleModule,
     RecaptchaModule,
     RecaptchaFormsModule
-    
 
   ],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule, {
+    provide: HTTP_INTERCEPTORS, 
+    useClass: AuthInterceptorService, 
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

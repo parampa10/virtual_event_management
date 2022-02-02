@@ -278,8 +278,8 @@ export class SignupComponent implements OnInit {
             data => {
               console.log(data)
               this.router.navigate(
-                ['/user/signup', {text: 'Account Created. \n Please enter your email to verify your account.'}],
-                { skipLocationChange: true }
+                ['/user/login', {text: 'Account Created'}],
+                //{ skipLocationChange: true }
               )
             },
             error => {

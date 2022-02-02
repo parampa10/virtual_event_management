@@ -73,7 +73,8 @@ export class LoginComponent implements OnInit {
             this.cookie.set("jwt", data)
             const pathUrl = this.route.snapshot.queryParams.returnUrl
             if (!pathUrl) {
-              this.location.back()
+              // this.location.back()
+              this.router.navigate(["/createMeeting"])
             } else {
               this.router.navigate([pathUrl])
             }
@@ -95,6 +96,6 @@ export class LoginComponent implements OnInit {
 
   getDataFromObj(data: any) {
     if (data.token) return data.token
-    else return data.text
+    else return data.message
   }
 }
