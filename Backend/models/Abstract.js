@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../config/database');
-const Event = require('../models/Event');
+const Event =   require('../models/Event');
 
 const Abstract = db.define('abstract', {
   absid:{

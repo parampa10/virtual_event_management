@@ -2,11 +2,8 @@ const user = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt=require("jsonwebtoken")
 
-
-
-
 exports.user_signup =async  (req, res) => {
-            let {first_name,last_name,primary_email_address,password}=req.body;
+            let {first_name,last_name,dob,address_line1,city,state,country,primary_phone_number,primary_email_address,affiliation_name,affiliation_email_address,username,password,is_admin,is_attendee,is_presenter}=req.body;
             if (!first_name) {
               res.status(400).send({
                 message: "First name can not be empty!"
@@ -35,8 +32,20 @@ exports.user_signup =async  (req, res) => {
             user.create({
                 fname:first_name,
                 lname:last_name,
+                dob:dob,
+                address:address_line1,
+                city:city,
+                state:state,
+                country:country,
+                phone_no: primary_phone_number,
                 email:primary_email_address,
-                password:hash
+                affiliation:affiliation_name,
+                aff_email:affiliation_email_address,
+                username:username,
+                password:hash,
+                is_admin:is_admin,
+                is_attendee:is_attendee,
+                is_presenter:is_presenter,
               })
               .then(result => {
                 console.log(result);
@@ -59,7 +68,13 @@ exports.user_login = (req, res, next) => {
     });
     return;
   }
-  user.findOne({ where: {email: req.body.username} })
+  user.findOne({ 
+    // where: {email: req.body.username} 
+    $or:[
+      {email:req.body.username},
+      {username:req.body.username}
+    ]
+  })
     .then(user => {
       if (!user) {
         return res.status(401).json({
@@ -91,7 +106,8 @@ exports.user_login = (req, res, next) => {
           //   email: req.body.email,  
           //   id: user.id,
           // });   
-          //res.cookie('jwt',token, { httpOnly: true, secure: true, maxAge: 3600000 })
+          // res.headers.set("auth",token);
+          res.cookie('jwt',token, { httpOnly: true, secure: true, maxAge: 3600000 });
           return res.status(200).json({
             message: "Auth successful",
             token: token

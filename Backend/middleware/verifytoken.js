@@ -2,8 +2,16 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
     try {
-        const token = req.headers.authorization.split(" ")[1];
+        console.log("hi");
+        console.log(req.headers);
+        const token = req.headers.authorization;
+        // const token1 = req.headers.authorization.split(" ")[1];
+        // const token = getCookie("jwt");
+        // console.log(token1);
+        // console.log(token);
+
         const decoded = jwt.verify(token, process.env.JWT_KEY);
+        console.log(decoded);
         req.user = decoded;
         next();
     } catch (error) {

@@ -13,15 +13,38 @@ const User = db.define('user', {
   lname:{
     type: Sequelize.STRING
   },
+  dob:{
+    type: Sequelize.DATEONLY
+  },
+  address:{
+    type: Sequelize.STRING
+  },
+  city:{
+    type: Sequelize.STRING
+  },
+  state:{
+    type: Sequelize.STRING
+  },
+  country:{
+    type: Sequelize.STRING
+  },
+  phone_no:{
+    type: Sequelize.BIGINT
+  },
   email: {
+    type: Sequelize.STRING
+  },
+  affiliation:{
+    type: Sequelize.STRING
+  },
+  aff_email:{
+    type: Sequelize.STRING
+  },
+  username:{
     type: Sequelize.STRING
   },
   password: {
     type: Sequelize.STRING
-  },
-  is_pending:{
-    type: Sequelize.BOOLEAN,
-    defaultValue: true
   },
   is_admin:{
     type: Sequelize.BOOLEAN,
