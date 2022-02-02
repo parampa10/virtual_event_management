@@ -21,8 +21,8 @@ export class AuthenticationService {
       if(res.hasOwnProperty("token")){
         this.is_authenticated = true;
         this.token = this.getDataFromObj(res);
+        localStorage.setItem("token", this.token);
       }
-      
     })
     return a;
   }

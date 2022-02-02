@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { AuthInterceptorService } from './services/authentication/auth-interceptor.service';
+import { AuthGuard } from './services/authentication/auth.guard';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,6 @@ import { AuthInterceptorService } from './services/authentication/auth-intercept
   imports: [
     BrowserModule,
     HttpClientModule,
-    
     MatButtonModule, 
     MatSnackBarModule, 
     BrowserAnimationsModule,
@@ -47,13 +47,12 @@ import { AuthInterceptorService } from './services/authentication/auth-intercept
     MatSlideToggleModule,
     RecaptchaModule,
     RecaptchaFormsModule
-
   ],
   providers: [MatDatepickerModule, {
     provide: HTTP_INTERCEPTORS, 
     useClass: AuthInterceptorService, 
     multi: true
-  }],
+  } , AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
