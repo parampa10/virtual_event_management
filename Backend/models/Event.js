@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const { defaultValueSchemable } = require('sequelize/dist/lib/utils');
 const db = require('../config/database');
 
 const Event = db.define('event', {
@@ -21,6 +22,13 @@ const Event = db.define('event', {
   },
   end_time: {
     type: Sequelize.TIME
+  },
+  event_date: {
+    type: Sequelize.DATEONLY
+  },
+  is_allocated:{
+    type: Sequelize.BOOLEAN,
+    defaultValue : false
   },
   address: {
     type: Sequelize.STRING

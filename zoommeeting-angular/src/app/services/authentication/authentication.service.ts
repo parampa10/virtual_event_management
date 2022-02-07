@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { WebRequestService } from '../web-request/web-request.service';
 
@@ -11,9 +12,13 @@ export class AuthenticationService {
   public is_authenticated : Observable<boolean>
   public verify : BehaviorSubject<boolean>
   token = "";
-  constructor(private webReqService: WebRequestService) {
+  constructor(private webReqService: WebRequestService, private router : Router) {
     this.verify = new BehaviorSubject<boolean>(localStorage.getItem("token")? true:false)
     this.is_authenticated = this.verify.asObservable()
+  }
+
+  isLoggedIn(){
+    return this.is_authenticated2
   }
 
   getDataFromObj(data: any) {
@@ -26,8 +31,9 @@ export class AuthenticationService {
     a.subscribe(res => {
       if(res.hasOwnProperty("token")){
         this.is_authenticated2 = true
-        this.verify = new BehaviorSubject<boolean>(true)
-        this.is_authenticated = this.verify.asObservable()
+        this.verify.next(true)
+        // this.verify = new BehaviorSubject<boolean>(true)
+        // this.is_authenticated = this.verify.asObservable()
         this.token = this.getDataFromObj(res);
         localStorage.setItem("token", this.token);
       }
@@ -41,7 +47,7 @@ export class AuthenticationService {
   
   isAuthenticated(){
     // return this.is_authenticated
-    if(this.isAuthenticated && this.token){
+    if(this.is_authenticated2 && this.token){
       return this.token
     }
     return "No Token Found"
@@ -49,5 +55,7 @@ export class AuthenticationService {
 
   logout(){
     localStorage.removeItem("token")
+    this.verify.next(false)
+    this.router.navigate(["/logIn"])
   }
 }

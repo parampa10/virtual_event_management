@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnChanges, SimpleChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DOCUMENT } from '@angular/common';
 import { AuthenticationService } from './services/authentication/authentication.service';
@@ -9,7 +9,7 @@ import { AuthenticationService } from './services/authentication/authentication.
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
 
   // userToken = "";
   is_authenticated = false
@@ -18,10 +18,23 @@ export class AppComponent implements OnInit {
     // if(auth.is_authenticated){
     //   this.is_authenticated = true
     // }
+    this.getVerification()
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    // throw new Error('Method not implemented.');
     this.auth.is_authenticated.subscribe(x => this.is_authenticated = x);
+    if(this.auth.isLoggedIn){
+      this.is_authenticated = true
+    }
   }
   title = 'zoom-meet';
   ngOnInit() {
+    this.is_authenticated = this.auth.isLoggedIn()
+    this.getVerification()
+  }
+
+  getVerification(){
+    this.auth.is_authenticated.subscribe(x => this.is_authenticated = x);
   }
 
   logout() {
