@@ -21,6 +21,8 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { AuthInterceptorService } from './services/authentication/auth-interceptor.service';
 import { AuthGuard } from './services/authentication/auth.guard';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { AuthGuard } from './services/authentication/auth.guard';
     MatToolbarModule,
     MatSlideToggleModule,
     RecaptchaModule,
-    RecaptchaFormsModule
+    RecaptchaFormsModule,
+    DragDropModule,MatDialogModule,
+    
   ],
   providers: [MatDatepickerModule, {
     provide: HTTP_INTERCEPTORS, 

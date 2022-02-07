@@ -9,6 +9,7 @@ import { ErrorDisplayComponent } from './Components/error-display/error-display.
 import { ButtonSubmitComponent } from './Components/button-submit/button-submit.component';
 import { LoginComponent } from './Components/User/login/login.component';
 import { AuthGuard } from './services/authentication/auth.guard';
+import { TimeTableComponent } from './Components/time-table/time-table.component';
 
 const routes: Routes =[
 
@@ -16,7 +17,7 @@ const routes: Routes =[
   {path: 'joinMeeting', component:JoinMeetingComponent, canActivate:[AuthGuard] },
   {path: 'signUp', component:SignupComponent},
   {path: 'logIn', component:LoginComponent},
-  
+  {path: 'timeTable', component:TimeTableComponent}
 ]
 
 @NgModule({
@@ -28,4 +29,4 @@ const routes: Routes =[
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [LoginComponent,CreateMeetingComponent,JoinMeetingComponent,SignupComponent,InputLabelComponent,ErrorDisplayComponent,ButtonSubmitComponent]
+export const routingComponents = [TimeTableComponent,LoginComponent,CreateMeetingComponent,JoinMeetingComponent,SignupComponent,InputLabelComponent,ErrorDisplayComponent,ButtonSubmitComponent]

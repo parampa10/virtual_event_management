@@ -4,8 +4,11 @@
       <mat-icon>menu</mat-icon>
     </button> -->
     <span>VEMS</span>
+
+    <a class="option" mat-button routerLink="/timeTable" >TimeTable</a>
+
     <!-- {is_authenticated} -->
-    <span class="example-spacer" style="flex: 1 1 auto;"></span>
+    <span  style="flex: 1 1 auto;"></span>
     <a mat-button routerLink="/logIn" routerLinkActive="active" *ngIf="!is_authenticated">
       Login
     </a>

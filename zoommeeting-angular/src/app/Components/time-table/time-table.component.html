@@ -1,0 +1,235 @@
+<div cdkDropListGroup>
+    <div class="example-container">
+        <button mat-raised-button class="btn btn-primary" (click)="addeventmodal()">add event</button>
+        <button mat-raised-button (click)="addBreakmodal()">add break</button>
+        
+        <div class="example-container">
+
+
+            <h2>Available Events</h2>
+
+            <div
+            cdkDropList
+            [cdkDropListData]="events_objects"
+            class="example-list"
+            
+            (cdkDropListDropped)="drop($event)">
+
+                <div class="example-box" *ngFor="let item of events_objects" cdkDrag>
+                    {{item.name}},    time:{{item.start}}    to {{item.end}} <ng-template  [ngIf]="item.date">Date:{{item.date}}</ng-template>
+                    <div class="button-box">
+                        <button mat-raised-button class="button" (click)="editmodal(item.name)">Edit</button>
+                        <button mat-raised-button class="button" color="warn" (click)="deletefunction(item.name)">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+           <!-- Modal -->
+        
+            
+           
+
+            <ng-template #addeventmodalref >
+                            <label><b>Event Name:</b></label>
+                            <input type="text" 
+                                placeholder="Enter Event Name" 
+                                name="eventname" 
+                                (change)="event_data($event)"
+                                [(ngModel)]="event.name"
+                                required><br>
+                            <label><b>Start</b></label>
+                            <input type="time" 
+                            name="eventstart" 
+                            [(ngModel)]="event.start"
+                            (change)="event_data($event)" 
+                            required><br>
+
+                            <label><b>end</b></label>
+                            <input type="time" name="eventend" 
+                            [(ngModel)]="event.end"
+                            (change)="event_data($event)" required><br>
+                            
+                            <label><b>date</b></label>
+                            <input type="date" name="eventdate" [(ngModel)]="event.date"  (change)="event_data($event)" required><br>
+                                
+                            <button type="submit" mat-button (click)="addevent()">Add Event</button>
+            <button mat-button mat-dialog-close="I am from dialog land...">Close</button>
+            
+            </ng-template>
+
+            <!-- Editing part ..............................-->
+            <ng-template #editeventmodalref >
+                
+                            
+                <label><b>Event Name:</b></label>
+                <input type="text" 
+                placeholder="Enter Event Name" 
+                name="eventname" 
+                (change)="event_data($event)"
+                [(ngModel)]="event.name"
+                required><br>
+
+                <label><b>Start</b></label>
+                <input type="time" 
+                name="eventstart" 
+                [(ngModel)]="event.start"
+                (change)="event_data($event)" 
+                required><br>
+
+                <label><b>end</b></label>
+                <input type="time" name="eventend" 
+                [(ngModel)]="event.end"
+                (change)="event_data($event)" required><br>
+                
+                <label><b>date</b></label>
+                <input type="date" name="eventdate" [(ngModel)]="event.date"  (change)="event_data($event)" required><br>
+                    
+                <button mat-button type="submit" (click)="editevent(event.name)">Edit Event</button>
+                <button mat-button mat-dialog-close="I am from dialog land...">Close</button>
+                    
+            </ng-template>
+
+            <!--break modal..........................-->
+            <ng-template  #addBreakmodalref  >
+               
+                            
+                            <label><b>Break Name:</b></label>
+                            <input type="text"  
+                                name="Breakname" 
+                                (change)="event_data($event)"
+                                [(ngModel)]="Break.name"
+                                required><br>
+
+                            <label><b>Start</b></label>
+                            <input type="time" 
+                            name="Breakstart" 
+                            [(ngModel)]="Break.start"
+                            (change)="event_data($event)" 
+                            required><br>
+
+                            <label><b>end</b></label>
+                            <input type="time" name="Breakend" 
+                            [(ngModel)]="Break.end"
+                            (change)="event_data($event)" required><br>
+                                
+                            <button mat-button type="submit" (click)="addBreak()">Add Break</button>
+                            <button mat-button mat-dialog-close="I am from dialog land...">Close</button>
+                     
+            </ng-template>
+
+            <!--break editing................-->
+            <ng-template  #editreakmodalref >
+                
+                            
+                            <label><b>Break Name:</b></label>
+                            <input type="text" 
+                                name="Breakname" 
+                                (change)="event_data($event)"
+                                [(ngModel)]="Break.name"
+                                required>
+
+                            <label><b>Start</b></label>
+                            <input type="time" 
+                            name="Breakstart" 
+                            [(ngModel)]="Break.start"
+                            (change)="event_data($event)" 
+                            required>
+
+                            <label><b>end</b></label>
+                            <input type="time" name="Breakend" 
+                            [(ngModel)]="Break.end"
+                            (change)="event_data($event)" required>
+                            
+                                
+                            <button type="submit" (click)="editBreak(Break.name)">Edit Event</button>
+                
+                        
+        </ng-template>
+
+        
+
+        <h2>Time-table</h2>
+        <table class="time-table-box" border="1px">
+            <tr >
+                <th class="title-box">{{todayDate   | date: 'dd/MM/yyyy'}}</th>
+                <th class="title-box">{{todayDate1  | date: 'dd/MM/yyyy'}}</th>
+                <th class="title-box">{{todayDate2  | date: 'dd/MM/yyyy'}}</th>
+                <th class="title-box">{{todayDate3  | date: 'dd/MM/yyyy'}}</th>
+                <th class="title-box">{{todayDate4  | date: 'dd/MM/yyyy'}}</th>
+                <th class="title-box">{{todayDate5  | date: 'dd/MM/yyyy'}}</th>
+                <th class="title-box">{{todayDate6  | date: 'dd/MM/yyyy'}}</th>
+            </tr>
+           
+                
+            <tr>    
+                <td
+                cdkDropList
+                [cdkDropListData]="basket1"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                    
+                    <p class="example-box" *ngFor="let item of basket1" cdkDrag>{{item.eventname}} <br> 
+                        time:{{item.start}} to {{item.end}}
+                    </p>
+                    
+                </td>
+
+                <td
+                cdkDropList
+                [cdkDropListData]="basket2"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                    <p class="example-box" *ngFor="let item of basket2" cdkDrag>{{item.eventname}}<br> 
+                    time:{{item.start}} to {{item.end}}
+                    </p>
+                </td>
+                <td
+                cdkDropList
+                [cdkDropListData]="basket3"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                    <p class="example-box" *ngFor="let item of basket3" cdkDrag>{{item.eventname}}<br> 
+                    time:{{item.start}} to {{item.end}}
+                    </p>
+                </td>
+                <td
+                cdkDropList
+                [cdkDropListData]="basket4"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                    <p class="example-box" *ngFor="let item of basket4" cdkDrag>{{item.eventname}}<br> 
+                    time:{{item.start}} to {{item.end}}
+                    </p>
+                </td>
+                <td
+                cdkDropList
+                [cdkDropListData]="basket5"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                    <p class="example-box" *ngFor="let item of basket5" cdkDrag>{{item.eventname}}<br> 
+                    time:{{item.start}} to {{item.end}}
+                    </p>
+                </td>
+                <td
+                cdkDropList
+                [cdkDropListData]="basket6"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                    <p class="example-box" *ngFor="let item of basket6" cdkDrag>{{item.eventname}}<br> 
+                    time:{{item.start}} to {{item.end}}
+                    </p>
+                </td>
+                <td
+                cdkDropList
+                [cdkDropListData]="basket7"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                    <p class="example-box" *ngFor="let item of basket7" cdkDrag>{{item.eventname}}<br> 
+                    time:{{item.start}} to {{item.end}}
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
