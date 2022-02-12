@@ -40,11 +40,13 @@ const userRoutes = require('./routes/users');
 const eventRoutes = require('./routes/events');
 const eventRegRoutes =require('./routes/e_register');
 const absRoutes =require('./routes/abstracts');
+const boothRoutes = require('./routes/boothinfo');
 
 app.use("/user", userRoutes);
 app.use("/event",eventRoutes);
 app.use("/events",eventRegRoutes);
 app.use("/events",absRoutes);
+app.use("/boothinfo",boothRoutes);
 
 
 app.post('/', (req, res) => {

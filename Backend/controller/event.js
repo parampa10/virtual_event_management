@@ -1,6 +1,25 @@
 const event = require("../models/Event");
 
-
+exports.event_by_day = async(req,res) => {
+  // let current_date = Date()
+  // const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
+  var current_date = new Date(Date.now()).toLocaleString().split(',')[0]; // Foramt : MM/DD/YYYY
+  try{
+    event.findAll({ where: {event_date: current_date} })
+    .then(data => {
+      if (data == null) {
+        return res.status(401).json({
+          message: `No Events Today`
+        });
+      }
+      else{
+        res.send(data);
+      }
+    })
+  }catch(err){
+      res.status(500).json({err:err.message});
+  }
+}
 
 exports.event_create =async  (req, res) => {
     let {title,e_type,description,start_time,end_time,address,room_id,room_name,veneue_id}=req.body;

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { defaultValueSchemable } = require('sequelize/dist/lib/utils');
+//const { defaultValueSchemable } = require('sequelize/dist/lib/utils');
 const db = require('../config/database');
 
 const Event = db.define('event', {

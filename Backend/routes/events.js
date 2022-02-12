@@ -14,6 +14,6 @@ router.put("/update/:id",checkAuth, checkAdmin,EventController.event_update);
 router.post("/delete/:id",checkAuth, checkAdmin,EventController.event_delete);
 router.get("/",checkAuth,checkAdmin,EventController.all_event);
 router.get("/:id",checkAuth,checkAdmin,EventController.event_by_id);
-
+router.get("/events",checkAuth,EventController.event_by_day);
 
 module.exports=router;
