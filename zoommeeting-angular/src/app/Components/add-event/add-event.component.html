@@ -1,0 +1,130 @@
+<div #error_display>
+  <app-error-display errorText="{{ errorText }}" [isInvalid]="isInvalid"></app-error-display>
+</div>
+
+
+<div class="create-event-container">
+  <div>
+    <p class="event-statement">Add Event</p>
+    <div class="label-input">
+      <table>
+        <tr class="event-name">
+          <td>
+            <label for="event-name">Event Name</label>
+            <span>*</span>
+          </td>
+          <td>
+            <input
+              type="text"
+              name="event_name"
+              id="event-name"
+              placeholder="Event Name"
+              [(ngModel)]="event_name"
+              (change)="addEventName(event_name)" />
+              <div
+                [ngStyle]="{ 'display': showError.event_name ? null : 'none' }">
+                <app-input-text-required name="Event Name"></app-input-text-required>
+              </div>
+          </td>
+        </tr>
+        <tr class="event-type">
+          <td>
+            <label for="event-type">Event Type</label>
+            <span>*</span>
+          </td>
+          <td>
+            <input
+              type="text"
+              name="event_type"
+              id="event-type"
+              placeholder="Event Type"
+              [(ngModel)]="event_type"
+              (change)="addEventType(event_type)" />
+              <div
+                [ngStyle]="{ 'display': showError.event_type ? null : 'none' }">
+                <app-input-text-required name="Event Type"></app-input-text-required>
+              </div>
+          </td>
+        </tr>
+
+        <tr class="event-description">
+          <td>
+            <label for="event-description">Description</label>
+            <span>*</span>
+          </td>
+          <td>
+            <input
+              type="text"
+              name="event-description"
+              id="event-description"
+              placeholder="Description"
+              [(ngModel)]="event_description"
+              (change)="addEventDescription(event_description)"
+              style="width: 450px;">
+            <div
+              [ngStyle]="{ 'display': showError.event_description ? null : 'none' }">
+              <app-input-text-required name="Event Description"></app-input-text-required>
+            </div>
+          </td>
+        </tr>
+        <tr class="event-date">
+          <td>
+            <label for="event-date">Event Date</label>
+            <span>*</span>
+          </td>
+          <td>
+            <input
+              type="date"
+              name="event-date"
+              id="event-date"
+              [(ngModel)]="event_date"
+              (change)="addEventDate(event_date)" />
+              <div
+                [ngStyle]="{ 'display': showError.event_date ? null : 'none' }">
+                <app-input-text-required name="Event Date"></app-input-text-required>
+              </div>
+          </td>
+        </tr>
+        <tr class="event-start">
+          <td>
+            <label for="event-start">Start Time</label>
+            <span>*</span>
+          </td>
+          <td>
+            <input
+              type="time"
+              name="start_time"
+              id="start_time"
+              [(ngModel)]="start_time"
+              (change)="addEventTime(start_time, 'start_time')" />
+              <div
+                [ngStyle]="{ 'display': showError.start_time ? null : 'none' }">
+                <app-input-text-required name="Start Date"></app-input-text-required>
+              </div>
+          </td>
+        </tr>
+        <tr class="event-end">
+          <td>
+            <label for="end_time">End Time</label>
+            <span>*</span>
+          </td>
+          <td>
+            <input
+              type="time"
+              name="end_time"
+              id="end_time"
+              [(ngModel)]="end_time"
+              (change)="addEventTime(end_time, 'end_time')" />
+              <div
+                [ngStyle]="{ 'display': showError.end_time ? null : 'none' }">
+                <app-input-text-required name="End Time"></app-input-text-required>
+              </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="submit">
+      <button class="button-center" mat-raised-button color="primary" (click)="addevent()"  >Submit</button>
+    </div>
+  </div>
+</div>

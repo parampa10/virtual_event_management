@@ -13,9 +13,9 @@ import { Router } from '@angular/router';
 })
 export class CreateMeetingComponent implements OnInit {
 
-  createMeetingForm: FormGroup;
+  createMeetingForm!: FormGroup;
   
-  link:string;
+  link!: string;
 
   constructor(
     private _fb: FormBuilder,

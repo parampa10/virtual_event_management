@@ -1,0 +1,208 @@
+.create-event-container {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    border: 1px solid rgb(161, 161, 161);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.16), -2px 1px 1px 1px rgba(0, 0, 0, 0.08);
+    border-radius: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 15px;
+  }
+  
+  .create-event-container div {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .event-statement {
+    width: 200px;
+    text-align: center;
+    align-self: center;
+    font-size: 25px;
+    font-weight: 600;
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 1.25px;
+  }
+
+  
+  
+  span {
+    color: red;
+    vertical-align: super;
+    padding-left: 4px;
+  }
+  
+  .label-input {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .label-input td {
+    padding-top: 20px;
+  }
+  
+  .label-input td:nth-child(1) {
+    width: 130px;
+    height: 35px;
+    text-align: right;
+    padding-right: 10px;
+  }
+  
+  .additional-info td:nth-child(1) {
+    vertical-align: top;
+  }
+  
+  
+  .label-input td:nth-child(2) {
+    padding-left: 10px;
+  }
+  
+  .label-input label {
+    color: #888888;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  
+  .label-input input {
+    width: 250px;
+    height: 35px;
+    padding: 10px;
+    font-size: 15.5px;
+    color: #181818;
+    letter-spacing: 0.5px;
+  }
+  
+  .label-input input::placeholder {
+    color: rgba(0, 0, 0, 0.514);
+  }
+  
+  .label-input input:focus {
+    background-color: rgba(81, 155, 184, 0.219);
+  }
+  
+  #event-name {
+    width: 300px;
+  }
+  
+  #event-venue {
+    width: 210px;
+    margin-right: 10px;
+  }
+  
+  #event-room {
+    width: 70px;
+    margin-left: 10px;
+  }
+  
+  #event-address {
+    width: 400px;
+  }
+ 
+  
+ 
+  
+  fieldset {
+    width: 327px;
+  }
+  
+  #keyword-insert input {
+    border: none;
+  }
+  
+  #keyword-insert input:focus {
+    background-color: #fff;
+    outline: none;
+  }
+  
+  #keyword-insert button {
+    height: 30px;
+    font-size: 12px;
+  }
+  
+  .protection-mode td:nth-child(1) {
+    vertical-align: top;
+  }
+  
+  .protection-mode td:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    width: 315px;
+    justify-content: space-evenly;
+  }
+  
+  .label-input button {
+    border: none;
+    margin: 4px 10px;
+    padding: 10px 10px 10px 10px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .active {
+     background-color: rgb(90, 148, 202);
+     color: white;
+  }
+  
+  .public-mode-container, .protected-mode-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .public-mode-container {
+    background-color: rgba(10, 131, 10, 0.39);
+    border: 3px solid rgba(10, 131, 10, 0.829);
+    width: 350px;
+    padding: 10px;
+    text-align: justify;
+  }
+  
+  .public-mode-container div:nth-child(1), .public-mode-container i {
+    color: rgba(10, 131, 10, 0.829);
+  }
+  
+  .public-mode-container i {
+    font-size: 30px;
+    margin-right: 15px;
+  }
+  
+  .protected-mode-container {
+    background-color: rgba(255, 0, 0, 0.201);
+    border: 3px solid rgba(255, 0, 0, 0.589);
+    width: 350px;
+    padding: 10px;
+    text-align: justify;
+  }
+  
+  .protected-mode-container div:nth-child(1), .protected-mode-container i {
+    color: rgba(255, 0, 0, 0.589);
+  }
+  
+  .protected-mode-container i {
+    font-size: 30px;
+    margin-right: 15px;
+  }
+  
+  .submit{
+    text-align: center;
+    margin-top: 20px;
+  }
+  @media screen and (max-width: 700px) {
+    .create-event-container {
+      width: 600px;
+      border:none;
+      box-shadow: none;
+    }
+    table {
+      margin: 0;
+    }
+  }
+  

@@ -32,7 +32,7 @@ export class JoinMeetingComponent implements OnInit {
   // Webinars: https://marketplace.zoom.us/docs/sdk/native-sdks/web/client-view/webinars#join-registered
   registrantToken = ''
 
-  constructor(public httpClient: HttpClient, @Inject(DOCUMENT) document) {
+  constructor(public httpClient: HttpClient,@Inject(DOCUMENT) document) {
 
   }
 
@@ -57,13 +57,13 @@ export class JoinMeetingComponent implements OnInit {
   }
 
 
-  startMeeting(signature) {
+  startMeeting(signature:any) {
 
-    document.getElementById('zmmtg-root').style.display = 'block'
+    //document.getElementById('zmmtg-root').style.display = 'block'
 
     ZoomMtg.init({
       leaveUrl: this.leaveUrl,
-      success: (success) => {
+      success: (success:any) => {
         console.log(success)
         ZoomMtg.join({
           signature: signature,
@@ -73,15 +73,15 @@ export class JoinMeetingComponent implements OnInit {
           userEmail: this.userEmail,
           passWord: this.passWord,
           tk: this.registrantToken,
-          success: (success) => {
+          success: (success:any) => {
             console.log(success)
           },
-          error: (error) => {
+          error: (error: any) => {
             console.log(error)
           }
         })
       },
-      error: (error) => {
+      error: (error: any) => {
         console.log(error)
       }
     })

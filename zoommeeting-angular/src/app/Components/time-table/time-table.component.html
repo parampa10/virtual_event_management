@@ -91,8 +91,7 @@
 
             <!--break modal..........................-->
             <ng-template  #addBreakmodalref  >
-               
-                            
+                
                             <label><b>Break Name:</b></label>
                             <input type="text"  
                                 name="Breakname" 
@@ -114,7 +113,7 @@
                                 
                             <button mat-button type="submit" (click)="addBreak()">Add Break</button>
                             <button mat-button mat-dialog-close="I am from dialog land...">Close</button>
-                     
+                       
             </ng-template>
 
             <!--break editing................-->
@@ -168,7 +167,7 @@
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
                     
-                    <p class="example-box" *ngFor="let item of basket1" cdkDrag>{{item.eventname}} <br> 
+                    <p class="example-box" *ngFor="let item of basket1" cdkDrag>{{item.name}} <br> 
                         time:{{item.start}} to {{item.end}}
                     </p>
                     
@@ -179,7 +178,7 @@
                 [cdkDropListData]="basket2"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                    <p class="example-box" *ngFor="let item of basket2" cdkDrag>{{item.eventname}}<br> 
+                    <p class="example-box" *ngFor="let item of basket2" cdkDrag>{{item.name}}<br> 
                     time:{{item.start}} to {{item.end}}
                     </p>
                 </td>
@@ -188,7 +187,7 @@
                 [cdkDropListData]="basket3"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                    <p class="example-box" *ngFor="let item of basket3" cdkDrag>{{item.eventname}}<br> 
+                    <p class="example-box" *ngFor="let item of basket3" cdkDrag>{{item.name}}<br> 
                     time:{{item.start}} to {{item.end}}
                     </p>
                 </td>
@@ -197,34 +196,34 @@
                 [cdkDropListData]="basket4"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                    <p class="example-box" *ngFor="let item of basket4" cdkDrag>{{item.eventname}}<br> 
+                    <p class="example-box" *ngFor="let item of basket4" cdkDrag>{{item.name}}<br> 
                     time:{{item.start}} to {{item.end}}
                     </p>
                 </td>
                 <td
                 cdkDropList
-                [cdkDropListData]="basket5"
+                [cdkDropListData]="basket4"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                    <p class="example-box" *ngFor="let item of basket5" cdkDrag>{{item.eventname}}<br> 
+                    <p class="example-box" *ngFor="let item of basket4" cdkDrag>{{item.name}}<br> 
                     time:{{item.start}} to {{item.end}}
                     </p>
                 </td>
                 <td
                 cdkDropList
-                [cdkDropListData]="basket6"
+                [cdkDropListData]="basket4"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                    <p class="example-box" *ngFor="let item of basket6" cdkDrag>{{item.eventname}}<br> 
+                    <p class="example-box" *ngFor="let item of basket4" cdkDrag>{{item.name}}<br> 
                     time:{{item.start}} to {{item.end}}
                     </p>
                 </td>
                 <td
                 cdkDropList
-                [cdkDropListData]="basket7"
+                [cdkDropListData]="basket4"
                 class="example-list"
                 (cdkDropListDropped)="drop($event)">
-                    <p class="example-box" *ngFor="let item of basket7" cdkDrag>{{item.eventname}}<br> 
+                    <p class="example-box" *ngFor="let item of basket4" cdkDrag>{{item.name}}<br> 
                     time:{{item.start}} to {{item.end}}
                     </p>
                 </td>

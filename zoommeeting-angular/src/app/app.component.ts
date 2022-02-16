@@ -1,8 +1,7 @@
-import { Component, OnInit, Inject, OnChanges, SimpleChanges } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { DOCUMENT } from '@angular/common';
-import { AuthenticationService } from './services/authentication/authentication.service';
-
+import { HttpClient } from '@angular/common/http';
+import { Component, Inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AuthenticationService } from './Services/authentication/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +22,7 @@ export class AppComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     // throw new Error('Method not implemented.');
     this.auth.is_authenticated.subscribe(x => this.is_authenticated = x);
-    if(this.auth.isLoggedIn){
+    if(this.auth.isLoggedIn()){
       this.is_authenticated = true
     }
   }

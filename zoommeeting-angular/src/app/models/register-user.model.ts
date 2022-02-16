@@ -18,4 +18,5 @@ export interface RegisterUser {
   is_admin: boolean
   is_attendee: boolean
   is_presenter: boolean
+  
 }

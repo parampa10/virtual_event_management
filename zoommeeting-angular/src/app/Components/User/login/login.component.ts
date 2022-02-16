@@ -2,8 +2,8 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { LoginUser } from 'src/app/models/login-user.model';
-import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { LoginUser } from 'src/app/Models/login-user.model';
+import { AuthenticationService } from 'src/app/Services/authentication/authentication.service';
 
 
 @Component({
@@ -71,10 +71,9 @@ export class LoginComponent implements OnInit {
           if (res.hasOwnProperty('token')) {
             const data = this.getDataFromObj(res)
             this.cookie.set("jwt", data)
-            const pathUrl = this.route.snapshot.queryParams.returnUrl
+            const pathUrl = this.route.snapshot.queryParams['returnUrl']
             if (!pathUrl) {
-              // this.location.back()
-              this.router.navigate(["/createMeeting"])
+              this.location.back()
             } else {
               this.router.navigate([pathUrl])
             }
@@ -85,7 +84,7 @@ export class LoginComponent implements OnInit {
         },
         error => {
           console.log(error)
-          this.errorText = error.error.error
+          this.errorText = error.error.message
           this.isInvalid = true
         }
       )
@@ -96,6 +95,6 @@ export class LoginComponent implements OnInit {
 
   getDataFromObj(data: any) {
     if (data.token) return data.token
-    else return data.message
+    else return data.text
   }
 }

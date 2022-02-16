@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { RegisterUser } from 'src/app/models/register-user.model'
-import { AuthenticationService } from 'src/app/services/authentication/authentication.service'
+import { RegisterUser } from 'src/app/Models/register-user.model'
+import { AuthenticationService } from 'src/app/Services/authentication/authentication.service'
 
 @Component({
   selector: 'app-signup',
@@ -83,7 +83,7 @@ export class SignupComponent implements OnInit {
     this.checkbox++
   }
 
-  onradioChange(evt) {
+  onradioChange(evt:any ) {
     if(evt.target.value == 'attendee'){
       this.is_attendee=true
     }
@@ -278,11 +278,12 @@ export class SignupComponent implements OnInit {
             data => {
               console.log(data)
               this.router.navigate(
-                ['/user/login', {text: 'Account Created'}],
-                //{ skipLocationChange: true }
+                ['/user/signup', {text: 'Account Created. \n Please enter your email to verify your account.'}],
+                { skipLocationChange: true }
               )
             },
             error => {
+              console.log(error)
               this.errorText = error.error
               this.isInvalid = true
             }

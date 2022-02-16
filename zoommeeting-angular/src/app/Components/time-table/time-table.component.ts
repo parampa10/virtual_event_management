@@ -3,6 +3,7 @@ import {moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { event } from 'src/app/Models/event.model';
 import { Break } from 'src/app/Models/break.model';
 import { MatDialog } from '@angular/material/dialog';
+import{EventService} from 'src/app/Services/event/event.service';
 
 @Component({
   selector: 'app-time-table',
@@ -35,6 +36,8 @@ export class TimeTableComponent implements OnInit {
 
   event: event = {
     name: "",
+    type: "",
+    description: "",
     start: {hours:0,minutes:0},
     end: {hours:0,minutes:0},
     date: new Date
@@ -54,16 +57,26 @@ export class TimeTableComponent implements OnInit {
   addBreakmodalref!: TemplateRef<any>;
   @ViewChild('editBreakmodalref')
   editBreakmodalref!: TemplateRef<any>;
+ 
+  constructor(public dialog: MatDialog,private eventService:EventService) { }
 
-  myFooList = ['Some Item', 'Item Second', 'Other In Row', 'What to write', 'Blah To Do']
+  temp:any=[]
   
-  constructor(public dialog: MatDialog) { }
-
-
-   
-
-
   ngOnInit(): void {
+    this.eventService.getEvents().subscribe(res  => {
+      this.temp=res
+      for (let i = 0; i <this.temp.length ; i++) {
+        this.basket1.push(this.temp[i])
+      }
+      console.log(this.temp.length)
+      console.log(this.temp[0])
+    })
+    
+    this.basket1.forEach((e :any) => {
+      console.log("HIII")  
+      console.log(e)
+      
+    });
   } 
 
   events_objects:any=[]
@@ -130,6 +143,8 @@ export class TimeTableComponent implements OnInit {
 
     this.event={
       name: "",
+      type: "",
+      description: "",
       start: {hours:0,minutes:0},
       end: {hours:0,minutes:0},
       date: new Date
@@ -159,6 +174,8 @@ export class TimeTableComponent implements OnInit {
     this.events_objects.push(this.event)
     this.event={
       name: "",
+      type: "",
+      description: "",
       start: {hours:0,minutes:0},
       end: {hours:0,minutes:0},
       date: new Date
