@@ -5,7 +5,7 @@ exports.event_by_day = async(req,res) => {
   // const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
   var current_date = new Date(Date.now()).toLocaleString().split(',')[0]; // Foramt : MM/DD/YYYY
   try{
-    event.findAll({ where: {event_date: current_date} })
+    event.findAll({ where: {date: current_date} })
     .then(data => {
       if (data == null) {
         return res.status(401).json({
@@ -22,14 +22,14 @@ exports.event_by_day = async(req,res) => {
 }
 
 exports.event_create =async  (req, res) => {
-    let {title,e_type,description,start_time,end_time,address,room_id,room_name,veneue_id}=req.body;
-    if (!title) {
+    let {name,type,description,start,end,date}=req.body;
+    if (!name) {
       res.status(400).send({
-        message: "title can not be empty!"
+        message: "name can not be empty!"
       });
       return;
     }
-    if (!e_type) {
+    if (!type) {
       res.status(400).send({
         message: "Event type can not be empty!"
       });
@@ -41,52 +41,31 @@ exports.event_create =async  (req, res) => {
       });
       return;
     }
-    if (!start_time) {
+    if (!start) {
       res.status(400).send({
         message: "Start time can not be empty!"
       });
       return;
     }
-    if (!end_time) {
+    if (!end) {
       res.status(400).send({
         message: "End time can not be empty!"
       });
       return;
     }
-    if (!address) {
+    if (!date) {
       res.status(400).send({
-        message: "Address can not be empty!"
-      });
-      return;
-    }
-    if (!room_id) {
-      res.status(400).send({
-        message: "Room id can not be empty!"
-      });
-      return;
-    }
-    if (!room_name) {
-      res.status(400).send({
-        message: "Room name can not be empty!"
-      });
-      return;
-    }
-    if (!veneue_id) {
-      res.status(400).send({
-        message: "Veneue id not be empty!"
+        message: "Event date can not be empty!"
       });
       return;
     }
     event.create({
-        title:title,
-        e_type:e_type,
+        name:name,
+        type:type,
         description:description,
-        start_time:start_time,
-        end_time:end_time,
-        address:address,
-        room_id:room_id,
-        room_name:room_name,
-        veneue_id:veneue_id
+        start:start,
+        end:end,
+        date:date,
       })
       .then(result => {
         console.log(result);

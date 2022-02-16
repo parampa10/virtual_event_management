@@ -8,44 +8,25 @@ const Event = db.define('event', {
     primaryKey:true,
     autoIncrement:true
   },
-  title: {
+  name: {
     type: Sequelize.STRING
   },
-  e_type: {
+  type: {
     type: Sequelize.STRING
   },
   description: {
     type: Sequelize.STRING
   },
-  start_time: {
+  start: {
     type: Sequelize.TIME
   },
-  end_time: {
+  end: {
     type: Sequelize.TIME
   },
-  event_date: {
+  date: {
     type: Sequelize.DATEONLY
   },
-  is_allocated:{
-    type: Sequelize.BOOLEAN,
-    defaultValue : false
-  },
-  address: {
-    type: Sequelize.STRING
-  },
-  room_id: {
-    type: Sequelize.INTEGER
-  },
-  room_name: {
-    type: Sequelize.STRING
-  },
-  veneue_id: {
-    type: Sequelize.INTEGER
-  },
-  veneue_id_2: {
-    type: Sequelize.INTEGER
-  }
-});
+},{timestamps: false});
 
 
 Event.sync().then(() => {
