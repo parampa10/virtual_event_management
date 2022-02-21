@@ -20,3 +20,16 @@ html, body {
   
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Add application styles & imports to this file! */
+a { cursor: pointer }
+
+.app-container {
+    min-height: 320px;
+    overflow: hidden;
+}
+
+.btn-delete-booth {
+    width: 40px;
+    text-align: center;
+    box-sizing: content-box;
+}

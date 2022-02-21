@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginUser } from 'src/app/Models/login-user.model';
-import { AuthenticationService } from 'src/app/Services/authentication/authentication.service';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 
 @Component({

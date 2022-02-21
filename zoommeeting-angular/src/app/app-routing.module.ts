@@ -11,7 +11,9 @@ import { TimeTableComponent } from './Components/time-table/time-table.component
 import { InputTextRequiredComponent } from './Components/input-text-required/input-text-required.component';
 import { CreateMeetingComponent } from './Components/create-meeting/create-meeting.component';
 import { JoinMeetingComponent } from './Components/join-meeting/join-meeting.component';
-import { AuthGuard } from './Services/authentication/auth.guard';
+import { AuthGuard } from './services/authentication/auth.guard';
+// import { BoothsModule } from './booths/booths.module';
+const BoothsModule = () => import("./booths/booths.module").then(x => x.BoothsModule);
 
 const routes: Routes = [
 
@@ -20,7 +22,8 @@ const routes: Routes = [
   {path: 'signUp', component: SignupComponent},
   {path: 'logIn', component:LoginComponent},
   {path: 'addEvent', component:AddEventComponent},
-  {path: 'timeTable', component:TimeTableComponent}
+  {path: 'timeTable', component:TimeTableComponent},
+  {path: 'booths', loadChildren:BoothsModule,canActivate:[AuthGuard]}
   
 ];
 

@@ -3,7 +3,7 @@ import {moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { event } from 'src/app/Models/event.model';
 import { Break } from 'src/app/Models/break.model';
 import { MatDialog } from '@angular/material/dialog';
-import{EventService} from 'src/app/Services/event/event.service';
+import{EventService} from 'src/app/services/event/event.service';
 
 @Component({
   selector: 'app-time-table',

@@ -25,8 +25,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 
-import { AuthInterceptorService } from './Services/authentication/auth-interceptor.service';
-import { AuthGuard } from './Services/authentication/auth.guard';
+import { AuthInterceptorService } from './services/authentication/auth-interceptor.service';
+import { AuthGuard } from './services/authentication/auth.guard';
+import { BoothService } from './services/booth.service';
 
 
 
@@ -62,7 +63,7 @@ import { AuthGuard } from './Services/authentication/auth.guard';
     provide: HTTP_INTERCEPTORS, 
     useClass: AuthInterceptorService, 
     multi: true
-  } , AuthGuard],
+  } , AuthGuard], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

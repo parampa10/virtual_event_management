@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { AuthenticationService } from './Services/authentication/authentication.service';
+import { AuthenticationService } from './services/authentication/authentication.service';
 
 @Component({
   selector: 'app-root',
