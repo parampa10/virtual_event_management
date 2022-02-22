@@ -1,7 +1,7 @@
 <div cdkDropListGroup>
     <div class="example-container">
-        <button mat-raised-button class="btn btn-primary" (click)="addeventmodal()">add event</button>
-        <button mat-raised-button (click)="addBreakmodal()">add break</button>
+        <button mat-raised-button class="btn btn-primary button" (click)="addeventmodal()">add event</button> 
+        <button mat-raised-button class="btn btn-primary button"(click)="addBreakmodal()">add break</button>
         
         <div class="example-container">
 
@@ -19,11 +19,12 @@
                     {{item.name}},    time:{{item.start}}    to {{item.end}} <ng-template  [ngIf]="item.date">Date:{{item.date}}</ng-template>
                     <div class="button-box">
                         <button mat-raised-button class="button" (click)="editmodal(item.name)">Edit</button>
-                        <button mat-raised-button class="button" color="warn" (click)="deletefunction(item.name)">Delete</button>
+                        <button mat-raised-button class="button" color="warn" (click)="deletefunction(item.eid)">Delete</button>
                     </div>
                 </div>
             </div>
-
+            <button mat-raised-button class="btn btn-primary button" (click)="arrange()">Arrange Events</button>
+            
            <!-- Modal -->
         
             
@@ -36,6 +37,20 @@
                                 name="eventname" 
                                 (change)="event_data($event)"
                                 [(ngModel)]="event.name"
+                                required><br>
+                            <label><b>Event Type:</b></label>
+                            <input type="text" 
+                                placeholder="Enter Event Type" 
+                                name="eventtype" 
+                                (change)="event_data($event)"
+                                [(ngModel)]="event.type"
+                                required><br>
+                            <label><b>Event Description:</b></label>
+                            <input type="textarea" 
+                                placeholder="Enter Event Description" 
+                                name="eventdescription" 
+                                (change)="event_data($event)"
+                                [(ngModel)]="event.description"
                                 required><br>
                             <label><b>Start</b></label>
                             <input type="time" 
@@ -67,6 +82,21 @@
                 name="eventname" 
                 (change)="event_data($event)"
                 [(ngModel)]="event.name"
+                required><br>
+
+                <label><b>Event Type:</b></label>
+                <input type="text" 
+                placeholder="Enter Event Type" 
+                name="eventtype" 
+                (change)="event_data($event)"
+                [(ngModel)]="event.type"
+                required><br>
+                <label><b>Event Description:</b></label>
+                <input type="textarea" 
+                placeholder="Enter Event Description" 
+                name="eventdescription" 
+                (change)="event_data($event)"
+                [(ngModel)]="event.description"
                 required><br>
 
                 <label><b>Start</b></label>
@@ -117,7 +147,7 @@
             </ng-template>
 
             <!--break editing................-->
-            <ng-template  #editreakmodalref >
+        <ng-template  #editreakmodalref >
                 
                             
                             <label><b>Break Name:</b></label>

@@ -3,7 +3,7 @@ import {moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { event } from 'src/app/Models/event.model';
 import { Break } from 'src/app/Models/break.model';
 import { MatDialog } from '@angular/material/dialog';
-import{EventService} from 'src/app/services/event/event.service';
+import{EventService} from 'src/app/Services/event/event.service';
 
 @Component({
   selector: 'app-time-table',
@@ -25,7 +25,10 @@ export class TimeTableComponent implements OnInit {
  
   todayDate : Date = new Date();
   date:number = this.todayDate.getDate();
-  month:number = this.todayDate.getMonth();
+  month:number = this.todayDate.getMonth()+1;
+
+  currentMonth = (this.todayDate.getMonth() < 10 ? '0' : '') + this.month;
+  
   year:number = this.todayDate.getFullYear();
   todayDate1 : Date = new Date(this.year+"-"+(this.month+1)+"-"+(this.date+1));
   todayDate2 : Date = new Date(this.year+"-"+(this.month+1)+"-"+(this.date+2));
@@ -34,7 +37,16 @@ export class TimeTableComponent implements OnInit {
   todayDate5 : Date = new Date(this.year+"-"+(this.month+1)+"-"+(this.date+5));
   todayDate6 : Date = new Date(this.year+"-"+(this.month+1)+"-"+(this.date+6));
 
+  stringdate =  this.year+"-"+this.currentMonth+"-"+(this.date)
+  stringdate1 = this.year+"-"+this.currentMonth+"-"+(this.date+1)
+  stringdate2 = this.year+"-"+this.currentMonth+"-"+(this.date+2)
+  stringdate3 = this.year+"-"+this.currentMonth+"-"+(this.date+3)
+  stringdate4 = this.year+"-"+this.currentMonth+"-"+(this.date+4)
+  stringdate5 = this.year+"-"+this.currentMonth+"-"+(this.date+5)
+  stringdate6 = this.year+"-"+this.currentMonth+"-"+(this.date+6)
+
   event: event = {
+    eid:0,
     name: "",
     type: "",
     description: "",
@@ -63,21 +75,39 @@ export class TimeTableComponent implements OnInit {
   temp:any=[]
   
   ngOnInit(): void {
+    
+    
     this.eventService.getEvents().subscribe(res  => {
       this.temp=res
-      for (let i = 0; i <this.temp.length ; i++) {
-        this.basket1.push(this.temp[i])
-      }
-      console.log(this.temp.length)
-      console.log(this.temp[0])
-    })
-    
-    this.basket1.forEach((e :any) => {
-      console.log("HIII")  
-      console.log(e)
       
-    });
+      for (let i = 0; i <this.temp.length ; i++) {
+        if(this.temp[i].date == this.stringdate){
+          this.basket1.push(this.temp[i])  
+        }
+        else if(this.temp[i].date == this.stringdate1){
+          this.basket2.push(this.temp[i])  
+        }
+        else if(this.temp[i].date == this.stringdate2){
+          this.basket3.push(this.temp[i])  
+        }
+        else if(this.temp[i].date == this.stringdate3){
+          this.basket4.push(this.temp[i])  
+        }
+        else if(this.temp[i].date == this.stringdate4){
+          this.basket5.push(this.temp[i])  
+        }
+        else if(this.temp[i].date == this.stringdate5){
+          this.basket6.push(this.temp[i])  
+        }
+        else if(this.temp[i].date == this.stringdate6){
+          this.basket7.push(this.temp[i])  
+        }
+        
+      }
+    })
+
   } 
+  
 
   events_objects:any=[]
 
@@ -104,11 +134,16 @@ export class TimeTableComponent implements OnInit {
 
 
   //event deleting .......
-  deletefunction(ename:any){
+  deletefunction(eid:any){
     console.log("deleting")
     this.events_objects.forEach((item:any,index:any)=>{
-      if(item.name==ename) this.events_objects.splice(index,1);
+      if(item.eid==eid) this.events_objects.splice(index,1);
     });
+    this.eventService.deleteEvent(eid).subscribe(
+      data=> {
+        console.log(data)
+      }
+    )
   }
 
   //event editing............
@@ -140,8 +175,15 @@ export class TimeTableComponent implements OnInit {
         this.event=item    
       }
    });
+  
+   this.eventService.editEvent(this.event.eid,this.event).subscribe(
+    data=> {
+      console.log(data)
+    }
+  )
 
     this.event={
+      eid:0,
       name: "",
       type: "",
       description: "",
@@ -171,8 +213,15 @@ export class TimeTableComponent implements OnInit {
 
   addevent(){
     console.log("event added!")
-    this.events_objects.push(this.event)
+
+    this.eventService.addEvent(this.event).subscribe(
+      data=> {
+        console.log(data)
+      }
+    )
+
     this.event={
+      eid: 0,
       name: "",
       type: "",
       description: "",
@@ -239,5 +288,33 @@ export class TimeTableComponent implements OnInit {
       end: {hours:0,minutes:0},
     }
     this.breaking=!this.breaking
+  }
+
+  arrange(){
+    for (let i = 0; i <this.events_objects.length ; i++) {
+      if(this.events_objects[i].date == this.stringdate){
+        this.basket1.push(this.events_objects[i])  
+      }
+      else if(this.events_objects[i].date == this.stringdate1){
+        this.basket2.push(this.events_objects[i])  
+      }
+      else if(this.events_objects[i].date == this.stringdate2){
+        this.basket3.push(this.events_objects[i])  
+      }
+      else if(this.events_objects[i].date == this.stringdate3){
+        this.basket4.push(this.events_objects[i])  
+      }
+      else if(this.events_objects[i].date == this.stringdate4){
+        this.basket5.push(this.events_objects[i])  
+      }
+      else if(this.events_objects[i].date == this.stringdate5){
+        this.basket6.push(this.events_objects[i])  
+      }
+      else if(this.events_objects[i].date == this.stringdate6){
+        this.basket7.push(this.events_objects[i])  
+      }
+      
+    }
+    this.events_objects =[]
   }
 }

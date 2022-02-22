@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { WebRequestService } from '../web-request/web-request.service';
+import { WebRequestService } from 'src/app/Services/web-request/web-request.service';
 import { HttpClient } from '@angular/common/http';
 import { ThisReceiver } from '@angular/compiler';
 import { event } from 'src/app/Models/event.model';
@@ -25,5 +25,13 @@ export class EventService {
   
   addEvent(event: Object){
     return this.webReqService.post('event/create',event)
+  }
+
+  editEvent(eid:number,event:object){
+    return this.webReqService.put(`event/update/${eid}`,event)
+  }
+  
+  deleteEvent(eid:number){
+    return this.webReqService.delete(`event/delete/${eid}`)
   }
 }

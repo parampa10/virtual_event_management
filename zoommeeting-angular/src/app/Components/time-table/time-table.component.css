@@ -65,9 +65,9 @@
 
   .button{
     text-align: center;
-    width: 100px;
-    height: 50px;
-    margin: 10px;
+    min-width: 100px;
+    height: 40px;
+    margin: 5px;
   }
   .cdk-drag-preview {
     box-sizing: border-box;
