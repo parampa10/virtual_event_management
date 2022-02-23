@@ -1,9 +1,10 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import {moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import { event } from 'src/app/Models/event.model';
-import { Break } from 'src/app/Models/break.model';
+import { event } from 'src/app/models/event.model';
+import { Break } from 'src/app/models/break.model';
 import { MatDialog } from '@angular/material/dialog';
-import{EventService} from 'src/app/Services/event/event.service';
+import{EventService} from 'src/app/services/event/event.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-time-table',
@@ -30,12 +31,12 @@ export class TimeTableComponent implements OnInit {
   currentMonth = (this.todayDate.getMonth() < 10 ? '0' : '') + this.month;
   
   year:number = this.todayDate.getFullYear();
-  todayDate1 : Date = new Date(this.year+"-"+(this.month+1)+"-"+(this.date+1));
-  todayDate2 : Date = new Date(this.year+"-"+(this.month+1)+"-"+(this.date+2));
-  todayDate3 : Date = new Date(this.year+"-"+(this.month+1)+"-"+(this.date+3));
-  todayDate4 : Date = new Date(this.year+"-"+(this.month+1)+"-"+(this.date+4));
-  todayDate5 : Date = new Date(this.year+"-"+(this.month+1)+"-"+(this.date+5));
-  todayDate6 : Date = new Date(this.year+"-"+(this.month+1)+"-"+(this.date+6));
+  todayDate1 : Date = new Date(this.year+"-"+(this.month)+"-"+(this.date+1));
+  todayDate2 : Date = new Date(this.year+"-"+(this.month)+"-"+(this.date+2));
+  todayDate3 : Date = new Date(this.year+"-"+(this.month)+"-"+(this.date+3));
+  todayDate4 : Date = new Date(this.year+"-"+(this.month)+"-"+(this.date+4));
+  todayDate5 : Date = new Date(this.year+"-"+(this.month)+"-"+(this.date+5));
+  todayDate6 : Date = new Date(this.year+"-"+(this.month)+"-"+(this.date+6));
 
   stringdate =  this.year+"-"+this.currentMonth+"-"+(this.date)
   stringdate1 = this.year+"-"+this.currentMonth+"-"+(this.date+1)
@@ -70,7 +71,7 @@ export class TimeTableComponent implements OnInit {
   @ViewChild('editBreakmodalref')
   editBreakmodalref!: TemplateRef<any>;
  
-  constructor(public dialog: MatDialog,private eventService:EventService) { }
+  constructor(public dialog: MatDialog,private eventService:EventService,private router: Router) { }
 
   temp:any=[]
   
@@ -230,6 +231,10 @@ export class TimeTableComponent implements OnInit {
       date: new Date
     }
     this.adding=!this.adding
+    this.router.navigate(['/timeTable'])
+    .then(() => {
+      window.location.reload();
+    });
     console.log(this.events_objects)
   }
 

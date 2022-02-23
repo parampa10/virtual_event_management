@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { WebRequestService } from 'src/app/Services/web-request/web-request.service';
+import { WebRequestService } from 'src/app/services/web-request/web-request.service';
 import { HttpClient } from '@angular/common/http';
 import { ThisReceiver } from '@angular/compiler';
-import { event } from 'src/app/Models/event.model';
+import { event } from 'src/app/models/event.model';
 import { Observable } from 'rxjs';
 
 @Injectable({

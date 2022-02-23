@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { timezone } from 'src/app/constants';
-import { event } from 'src/app/Models/event.model';
-import { EventService } from 'src/app/Services/event/event.service';
+import { event } from 'src/app/models/event.model';
+import { EventService } from 'src/app/services/event/event.service';
 
 @Component({
   selector: 'app-add-event',

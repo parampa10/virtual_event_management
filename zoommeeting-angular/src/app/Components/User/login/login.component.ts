@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { LoginUser } from 'src/app/Models/login-user.model';
+import { LoginUser } from 'src/app/models/login-user.model';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 
@@ -72,8 +72,10 @@ export class LoginComponent implements OnInit {
             const data = this.getDataFromObj(res)
             this.cookie.set("jwt", data)
             const pathUrl = this.route.snapshot.queryParams['returnUrl']
+
             if (!pathUrl) {
               this.location.back()
+              
             } else {
               this.router.navigate([pathUrl])
             }
