@@ -5,6 +5,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { ModifyComponent } from './modify/modify.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BoothsRoutingModule } from './booth-routing.module';
+import { BoothlistComponent } from './boothlist/boothlist.component';
+import { BoothvisualComponent } from './boothvisual/boothvisual.component';
 
 
 
@@ -13,6 +15,8 @@ import { BoothsRoutingModule } from './booth-routing.module';
     ListComponent,
     LayoutComponent,
     ModifyComponent,
+    BoothlistComponent,
+    BoothvisualComponent,
 
   ],
   imports: [

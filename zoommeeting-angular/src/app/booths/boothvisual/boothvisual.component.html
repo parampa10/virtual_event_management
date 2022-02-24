@@ -1,0 +1,17 @@
+<div *ngIf="isValid" id="wrapper">
+    <!-- <div class="container" *ngIf="isValid" id="wrapper"></div> -->
+
+    <img src="../../../assets/T-B.jpg" alt="boothImage" class= "image-fluid" usemap = "#boothImg" height="570px" width="920px">
+    <span>
+        {{name}}
+    </span>
+    <map name="boothImg" style="cursor:pointer;">
+        <area shape="rect" coords="496,248,560,351" alt="Timetable" (click)="onClick('Timetable Clicked')">
+        <area shape="poly" coords="570,199,628,205,571,305,628,308" alt="Zoom Meet" (click)="onClick('Meeting Initiated')">
+        <area shape="rect" coords="904,323,994,569" alt="Brochure" (click)="onClick('Brochure Requested')">
+    </map>
+</div>
+
+<div class="display-3" *ngIf="!isValid">
+    Company Name not present, Go Back
+</div>
