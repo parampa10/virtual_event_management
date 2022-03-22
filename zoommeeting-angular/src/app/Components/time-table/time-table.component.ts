@@ -214,7 +214,7 @@ export class TimeTableComponent implements OnInit {
 
   addevent(){
     console.log("event added!")
-
+    this.events_objects.push(this.event)
     this.eventService.addEvent(this.event).subscribe(
       data=> {
         console.log(data)
@@ -231,10 +231,10 @@ export class TimeTableComponent implements OnInit {
       date: new Date
     }
     this.adding=!this.adding
-    this.router.navigate(['/timeTable'])
-    .then(() => {
-      window.location.reload();
-    });
+    // this.router.navigate(['/timeTable'])
+    // .then(() => {
+    //   window.location.reload();
+    // });
     console.log(this.events_objects)
   }
 
