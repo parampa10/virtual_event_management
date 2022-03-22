@@ -1,17 +1,35 @@
-<div *ngIf="isValid" id="wrapper">
-    <!-- <div class="container" *ngIf="isValid" id="wrapper"></div> -->
-
-    <img src="../../../assets/T-B.jpg" alt="boothImage" class= "image-fluid" usemap = "#boothImg" height="570px" width="920px">
-    <span>
-        {{name}}
-    </span>
-    <map name="boothImg" style="cursor:pointer;">
-        <area shape="rect" coords="496,248,560,351" alt="Timetable" (click)="onClick('Timetable Clicked')">
-        <area shape="poly" coords="570,199,628,205,571,305,628,308" alt="Zoom Meet" (click)="onClick('Meeting Initiated')">
-        <area shape="rect" coords="904,323,994,569" alt="Brochure" (click)="onClick('Brochure Requested')">
-    </map>
+<div class="alert alert-info">
+    <strong>Info:</strong> Hover Over the image for relevant details
 </div>
+<div class="wrapper">
+    <img src="../../../assets/booth1.jpg" alt="">
+    <div class="name text-capitalize"> {{name}}</div>
+    <svg viewBox="0 0 6738 4803">
+        <g>
+            <a href="https://youtube.com" target="_blank" title="Video">
+                <polygon points="3700,1688,3706,2134,4379,1747,4367,1307"/>
+            </a>
+            <title>Video</title>
+        </g>
+        <g>
+            <a href="https://meet.google.com" target="_blank" title="Meet Rep">
+                <polygon points="2004,3691,2277,3519,2777,3251,3027,3102,3033,2632,2896,2549,2771,2316,2557,2644,2319,2662,2158,2495,2123,2299,2021,2304,1992,2376,1908,2566,1837,2685,1777,3102,1754,3554"/>
+            </a>
+            <title>Meet Rep</title>
+        </g>
 
-<div class="display-3" *ngIf="!isValid">
-    Company Name not present, Go Back
+        <g>
+            <a href="https://mail.google.com" target="_blank" title="TimeTable">
+                <polygon points="730,2782,1135,2532,1152,3466,712,3782"/>
+            </a>
+            <title>TimeTable</title>
+        </g>
+
+        <g>
+            <a href="https://drive.google.com" target="_blank" title="Brochure">
+                <polygon points="5444,1686,5652,1566,5748,1721,5777,2328,5748,2495,5515,2620,5444,2572"/>
+            </a>
+            <title>Brochure</title>
+        </g>
+    </svg>
 </div>

@@ -278,8 +278,8 @@ export class SignupComponent implements OnInit {
             data => {
               console.log(data)
               this.router.navigate(
-                ['/user/signup', {text: 'Account Created. \n Please enter your email to verify your account.'}],
-                { skipLocationChange: true }
+                ['/logIn', {text: 'Account Created. \n Please enter your email to verify your account.'}],
+                // { skipLocationChange: true }
               )
             },
             error => {
@@ -287,6 +287,10 @@ export class SignupComponent implements OnInit {
               this.errorText = error.error
               this.isInvalid = true
             }
+          )
+          this.authService.createEjabUser(this.userInfo).subscribe(
+            data => console.log(data),
+            error => console.log(error)
           )
         }
     } else {

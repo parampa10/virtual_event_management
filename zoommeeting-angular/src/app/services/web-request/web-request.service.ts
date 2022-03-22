@@ -27,4 +27,10 @@ export class WebRequestService {
   delete(uri: string) {
     return this.http.delete(`${this.ROOT_URL}/${uri}`)
   }
+
+  registerEjab(payload: Object){
+    return this.http.post(`https://localhost:5443/api/register`, payload);
+  }
+
+
 }

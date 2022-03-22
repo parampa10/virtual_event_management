@@ -1,3 +1,4 @@
+const {Op} = require('sequelize')
 const user = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt=require("jsonwebtoken")
@@ -28,7 +29,8 @@ exports.user_signup =async  (req, res) => {
               });
               return;
             }
-            let hash= await bcrypt.hash(password,10);
+            const salt = await bcrypt.genSalt(10);
+            let hash= await bcrypt.hash(password,salt);
             user.create({
                 fname:first_name,
                 lname:last_name,
@@ -69,11 +71,18 @@ exports.user_login = (req, res, next) => {
     return;
   }
   user.findOne({ 
-    // where: {email: req.body.username} 
-    $or:[
-      {email:req.body.username},
-      {username:req.body.username}
-    ]
+    // where: {username: req.body.username} 
+
+    // $or:[
+    //   {email:req.body.username},
+    //   {username:req.body.username}
+    // ]
+    where: {
+      [Op.or]:[
+        {email: req.body.username},
+        {username: req.body.username}
+      ]
+    }
   })
     .then(user => {
       if (!user) {
@@ -81,8 +90,11 @@ exports.user_login = (req, res, next) => {
           message: "Not found"
         });
       }
+      console.log(user.password);
+      console.log(req.body);
       bcrypt.compare(req.body.password, user.password, (err, result) => {
         if (err) {
+          console.log(err);
           return res.status(401).json({
             message: "Auth failed"
           });
@@ -110,7 +122,8 @@ exports.user_login = (req, res, next) => {
           res.cookie('jwt',token, { httpOnly: true, secure: true, maxAge: 3600000 });
           return res.status(200).json({
             message: "Auth successful",
-            token: token
+            token: token,
+            username: user.username,
           });
         }
         res.status(401).json({

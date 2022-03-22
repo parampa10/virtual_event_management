@@ -9,6 +9,10 @@ const cors=require('cors');
 const path = require('path');
 dotenv.config();
 
+// const { client, xml, jid } = require("@xmpp/client");
+// import { BoshClient, $build } from "xmpp-bosh-client/node";
+
+
 const checkAuth = require('./middleware/verifytoken');
 const checkAdmin = require('./middleware/isAdmin');
 const checkAttendee = require('./middleware/isAttendee');
@@ -104,6 +108,37 @@ app.post("/createMeeting",checkAuth, checkAdmin,(req, res) => {
   }
 });
 
-//app.listen(PORT, console.log(`Server started on port ${PORT}`));
+// when using with Node.js
+// import { BoshClient } from "xmpp-bosh-client/node"; 
 
+// var lib = require("xmpp-bosh-client/node");
+// // when using with Node.js
+// process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+
+// var USERNAME = "admin1@localhost";
+// var PASSWORD = "pass1234";
+// var URL = "wss://localhost:5443/ws";
+ 
+//     var client = new lib.BoshClient(USERNAME, PASSWORD, URL);
+//     client.on("error", function (e) {
+//         console.log("Error event");
+//         console.log(e);
+//     });
+//     client.on("online", function () {
+//         console.log("Connected successfully");
+//     });
+//     client.on("ping", function () {
+//         console.log("Ping received at " + new Date());
+//     });
+//     client.on("stanza", function (stanza) {
+//         console.log("Stanza received at %s",new Date());
+//         console.log(stanza);
+//     });
+//     client.on("offline", function () {
+//         console.log("Disconnected/Offline");
+//     });
+    
+//     client.connect();
+ 
 module.exports =app;
+

@@ -1,11 +1,22 @@
-#wrapper{
+.wrapper{
+    display: inline-block;
     position: relative;
-    background: lightgray;
+    fill:transparent;
 }
-#wrapper span{
+.wrapper img{
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+}
+.wrapper svg{
+    left: 0;
+    top: 0;
     position: absolute;
-    top: 192px;
-    right: 600px;
-    color: red;
-    font-size: 1.75rem;
+}
+.name{
+    font-size: 1.5rem;
+    transform: rotate(-30deg);
+    top: 68%;
+    right: 20%;
+    position: absolute;
 }

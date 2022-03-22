@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@xmpp/client": "^0.13.1",
+    "@xmpp/debug": "^0.13.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
     "cookie": "^0.4.1",
@@ -27,10 +29,11 @@
     "path": "^0.12.7",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
+    "postgres": "^1.0.2",
+    "request": "^2.88.2",
     "sequelize": "^6.12.2",
     "url": "^0.11.0",
-    "postgres": "^1.0.2",
-    "request": "^2.88.2"
+    "xmpp-bosh-client": "^0.4.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
