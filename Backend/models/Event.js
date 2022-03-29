@@ -26,6 +26,9 @@ const Event = db.define('event', {
   date: {
     type: Sequelize.DATEONLY
   },
+  link:{
+    type: Sequelize.STRING
+  },
 },{timestamps: false});
 
 

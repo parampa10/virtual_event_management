@@ -41,7 +41,8 @@ export class AddEventComponent implements OnInit {
     description: "",
     start: {hours:0,minutes:0},
     end: {hours:0,minutes:0},
-    date: new Date
+    date: new Date,
+    link:"",
   }
 
   showError = {

@@ -82,7 +82,7 @@ app.post("/createMeeting",checkAuth, checkAdmin,(req, res) => {
       body: {
         start_time: playload.date,
         duration: playload.duration,
-        topic: playload.topic,
+        topic: playload.name,
         type: 2,
       },
     };
@@ -92,7 +92,8 @@ app.post("/createMeeting",checkAuth, checkAdmin,(req, res) => {
       if (!error && response.statusCode === 201) {
         res.send({ 
           message: "meeting has been successfully created ",
-          link: response.body.join_url
+          link: response.body.join_url,
+          name: response.body.topic,
         });
         console.log(response.body.join_url);
       } 

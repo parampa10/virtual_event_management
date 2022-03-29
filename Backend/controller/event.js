@@ -22,7 +22,7 @@ exports.event_by_day = async(req,res) => {
 }
 
 exports.event_create =async  (req, res) => {
-    let {name,type,description,start,end,date}=req.body;
+    let {name,type,description,start,end,date,link}=req.body;
     if (!name) {
       res.status(400).send({
         message: "name can not be empty!"
@@ -66,6 +66,7 @@ exports.event_create =async  (req, res) => {
         start:start,
         end:end,
         date:date,
+        link:link,
       })
       .then(result => {
         console.log(result);

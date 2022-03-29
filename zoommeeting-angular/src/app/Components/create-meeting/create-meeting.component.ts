@@ -5,6 +5,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
+import{EventService} from 'src/app/services/event/event.service';
+import { event } from 'src/app/models/event.model';
+import { doesNotReject } from 'assert';
 
 @Component({
   selector: 'app-create-meeting',
@@ -16,12 +19,27 @@ export class CreateMeetingComponent implements OnInit {
   createMeetingForm!: FormGroup;
   
   link!: string;
+  name!: string;
+
+  event: event = {
+    eid:0,
+    name: "",
+    type: "",
+    description: "",
+    start: {hours:0,minutes:0},
+    end: {hours:0,minutes:0},
+    date: new Date,
+    link: "",
+  }
+  temp:any=[]
+  temp2:any=[]
 
   constructor(
     private _fb: FormBuilder,
     private _httpClient: HttpClient,
     private _snackBar: MatSnackBar,
-    private router:Router
+    private router:Router,
+    private eventService:EventService,
   ) { }
 
   ngOnInit(): void {
@@ -53,9 +71,13 @@ export class CreateMeetingComponent implements OnInit {
     this._httpClient.post(`${environment.API_URL}/createmeeting`, payloads).subscribe((res: any) => {
       this.displayMessage(res.message);
       this.link= res.link;
+      this.name=res.name;
     }, (error: any) => {
       this.displayMessage(error.message);
     })
+
+    
+  
   }
   private displayMessage(message: string) {
     this._snackBar.open(message, "Okay", {
@@ -79,4 +101,26 @@ export class CreateMeetingComponent implements OnInit {
     window.location.href = this.link;
   }
 
+  update_event(){
+    //updating link in event
+    this.eventService.getEvents().subscribe(res  => {
+      this.temp=res;
+
+      for (let item in res){
+        this.temp2.push(res[item])
+      } 
+      for(let i=0;i<this.temp2.length;i++){
+        if(this.temp2[i].name == this.name){
+          this.event=this.temp2[i]
+        }
+      }
+      //adding link
+      this.event.link=this.link
+      this.eventService.editEvent(this.event.eid,this.event).subscribe(
+        data=> {
+          console.log(data)
+        }
+      )
+    })
+  }
 }

@@ -53,7 +53,8 @@ export class TimeTableComponent implements OnInit {
     description: "",
     start: {hours:0,minutes:0},
     end: {hours:0,minutes:0},
-    date: new Date
+    date: new Date,
+    link:"",
   }
   //user B cause break is keyword
   Break: Break = {
@@ -190,7 +191,8 @@ export class TimeTableComponent implements OnInit {
       description: "",
       start: {hours:0,minutes:0},
       end: {hours:0,minutes:0},
-      date: new Date
+      date: new Date,
+      link:"",
     }
     this.editing=!this.editing
     
@@ -228,7 +230,8 @@ export class TimeTableComponent implements OnInit {
       description: "",
       start: {hours:0,minutes:0},
       end: {hours:0,minutes:0},
-      date: new Date
+      date: new Date,
+      link:"",
     }
     this.adding=!this.adding
     // this.router.navigate(['/timeTable'])
@@ -322,4 +325,11 @@ export class TimeTableComponent implements OnInit {
     }
     this.events_objects =[]
   }
+
+
+  gotolink(link:any){
+    window.open(link, "_blank");
+
+  }
+
 }

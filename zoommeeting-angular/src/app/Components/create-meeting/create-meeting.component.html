@@ -45,7 +45,9 @@
             <button mat-button mat-raised-button color="primary">Save</button>
         </mat-card-actions>
     </form>
-
+    <div class="center" *ngIf="link">
+        <button type="button" class="btn btn-primary" (click)="update_event()">update Event</button>
+    </div><br>
     <div class="center" *ngIf="link">
         <button type="button" class="btn btn-primary" (click)="join_created_meeting()">Join Meeting</button>
     </div>

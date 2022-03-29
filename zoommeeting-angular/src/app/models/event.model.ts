@@ -9,6 +9,5 @@ export interface event {
     start:Time
     end:Time
     date:Date
-
-
+    link:string
 }

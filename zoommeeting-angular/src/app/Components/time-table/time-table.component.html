@@ -18,6 +18,7 @@
                 <div class="example-box" *ngFor="let item of events_objects" cdkDrag>
                     {{item.name}},    time:{{item.start}}    to {{item.end}} <ng-template  [ngIf]="item.date">Date:{{item.date}}</ng-template>
                     <div class="button-box">
+                        <button mat-raised-button class="button" *ngIf="item.link" (click)="gotolink(item.link)">link</button>
                         <button mat-raised-button class="button" (click)="editmodal(item.name)">Edit</button>
                         <button mat-raised-button class="button" color="warn" (click)="deletefunction(item.eid)">Delete</button>
                     </div>
